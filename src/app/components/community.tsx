@@ -30,7 +30,7 @@ const Community = () => {
 
       <div className="absolute inset-0 flex items-start justify-center pointer-events-none">
         {/* White glow layer */}
-        <div className="absolute top-1/7 left-1/7 transform -translate-y-1/3 translate-x-1/6">
+        <div className="relative top-1/10 right-1/9 transform -translate-y-1/3 translate-x-1/6">
           <div className="relative">
             <div className="absolute inset-0 blur-xl bg-white opacity-20 rounded-full w-[350px] h-[350px]"></div>
             <Image

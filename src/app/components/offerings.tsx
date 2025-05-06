@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Offerings = () => {
   const scrollToNextSection = () => {
-    const nextSection = document.getElementById("testimonials");
+    const nextSection = document.getElementById("footer");
 
     if (nextSection) {
       nextSection.scrollIntoView({
@@ -17,15 +17,21 @@ const Offerings = () => {
   return (
     <div id="offerings" className="relative py-20 bg-white overflow-hidden">
       {/* Blue accent shape in top-left - positioned behind elements */}
-      <div className="absolute top-30 left-20 w-52 md:w-72 h-auto z-0">
-        <Image
-          src="/offerings-vector.png"
-          alt="Blue Accent"
-          width={200}
-          height={200}
-          className="object-contain"
-        />
-      </div>
+       <div className="absolute inset-0 flex items-start justify-center pointer-events-none">
+              {/* White glow layer */}
+              <div className="relative top-1/4 right-1/3 transform -translate-y-1/3 translate-x-1/6">
+                <div className="relative">
+                  <div className="absolute inset-0   rounded-full w-[350px] h-[350px]"></div>
+                  <Image
+                    src="/offerings-vector.png"
+                    alt="Star Background"
+                    width={200}
+                    height={180}
+                    className="object-contain relative z-10 "
+                  />
+                </div>
+              </div>
+            </div>
 
       <div className="relative max-w-6xl mx-auto px-4 z-10">
         {/* Heading - with adjusted positioning for blue accent visibility */}
