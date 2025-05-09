@@ -40,7 +40,7 @@ const Hero = () => {
     <div id="top" className="bg-white text-black">
       {/* Navbar */}
       <div className="sticky top-0 z-40 flex justify-center w-full py-3 sm:py-4 px-3">
-        <div className="flex items-center justify-between max-w-5xl w-full mx-auto px-3 sm:px-5 border-2 border-black rounded-full shadow-sm h-14 md:h-15 bg-white backdrop-blur-sm">
+        <div className="flex items-center justify-between max-w-5xl w-full mx-auto px-3 sm:px-5 border-2 border-black rounded-full  h-14 md:h-15 bg-white backdrop-blur-sm">
           <div className="flex items-center">
             <Link href="/">
               <Image
@@ -167,7 +167,7 @@ const Hero = () => {
             onClick={(e) => handleNavClick(e, "contact")}
             className="inline-block px-5 sm:px-6 md:px-8 py-2 sm:py-3 text-lg sm:text-xl md:text-2xl text-black border-2 font-semibold 
             bg-[#F3B07C] rounded-full hover:bg-opacity-90 transition-colors 
-            shadow-md hover:shadow-lg mb-6 sm:mb-8"
+             mb-6 sm:mb-8"
           >
             Contact Us
           </a>
@@ -194,7 +194,7 @@ const Hero = () => {
       <div className="flex justify-center py-6">
         <button
           onClick={scrollToNextSection}
-          className="rounded-full p-2 border border-black text-black shadow-sm hover:bg-gray-100 transition-colors cursor-pointer"
+          className="rounded-full p-2 border border-black text-black  hover:bg-gray-100 transition-colors cursor-pointer"
           aria-label="Scroll to next section"
         >
           <ArrowDown className="w-4 h-4 sm:w-5 sm:h-5" />

@@ -9,8 +9,8 @@ const Footer = () => {
       {/* Contact bar */}
       <div className="mt-10 sm:mt-16 px-4 max-w-6xl mx-auto">
         {/* Desktop version - horizontal with reversed order */}
-        <div className="hidden sm:flex items-center justify-between bg-white rounded-full w-full px-5 py-4 md:h-16">
-          <div className="flex-1 px-4 sm:px-6 py-1 text-left text-base sm:text-lg font-medium text-black">
+        <div className="hidden sm:flex items-center justify-between bg-white rounded-full w-full border-2 border-black px-5 py-4 md:h-16">
+          <div className="flex-1 px-4 sm:px-6 py-1 text-left text-base sm:text-lg font-medium  text-black">
             Get in touch for inquiries, workshops, or collaborations :)
           </div>
           <a
@@ -57,7 +57,7 @@ const Footer = () => {
       </div>
 
       {/* Contact information */}
-      <div className="mt-6 px-4 max-w-6xl mx-auto">
+      <div className="mt-6 px-4 max-w-6xl mx-auto mb-50">
         <div className="flex flex-col sm:flex-row items-center justify-center md:justify-between gap-4 sm:gap-6 py-4">
           <div className="flex items-center">
             <div className="w-6 h-6 mr-2 flex items-center justify-center">
@@ -87,28 +87,28 @@ const Footer = () => {
       </div>
 
       {/* Divider with stars */}
-      <div className="max-w-6xl mx-auto px-4 my-6 sm:my-8">
+      <div className="max-w-6xl mx-auto px-4 my-6 sm:my-8 ">
         <div className="relative">
-          <div className="absolute inset-0 flex justify-center -top-8">
-            <div className="text-black text-3xl sm:text-4xl flex space-x-2">
-              <span>*</span>
-              <span>*</span>
-              <span>*</span>
-            </div>
+          <div className="absolute inset-0 flex justify-center -top-14">
+        <div className="text-black text-2xl sm:text-4xl flex space-x-2">
+          <span>*</span>
+          <span>*</span>
+          <span>*</span>
+        </div>
           </div>
-          <div className="border-t border-black font-bold mt-4"></div>
+          <div className="border-t border-black font-bold mt-8"></div>
         </div>
       </div>
 
       {/* Main footer content */}
-      <div className="max-w-6xl mx-auto px-4 py-6 sm:py-8">
+      <div className="max-w-6xl mx-auto px-4 py-6 sm:py-8 mt-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-8">
           {/* Logo */}
           <div className="md:col-span-5 flex justify-center sm:justify-start">
             <Image
               src="/vega-main.png"
               alt="Vega Logo"
-              width={180}
+              width={200}
               height={80}
               className="object-contain"
             />
@@ -152,7 +152,7 @@ const Footer = () => {
       </div>
 
       {/* Copyright bar */}
-      <div className="bg-white py-4 text-black font-bold">
+      <div className="bg-white py-6 text-black font-bold">
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0">
           <div className="flex items-center">
             <div className="w-4 sm:w-5 h-4 sm:h-5 mr-1 sm:mr-2 flex items-center justify-center">

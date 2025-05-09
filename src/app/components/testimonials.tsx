@@ -65,7 +65,7 @@ const Testimonials = () => {
           {/* Previous Button */}
           <button 
             onClick={goToPrevious}
-            className="absolute -left-4 z-10 bg-white rounded-full p-2 shadow-md hover:bg-gray-100 transition-all  border-black border-2"
+            className="absolute -left-4 z-10 bg-white rounded-full p-2  hover:bg-gray-100 transition-all  border-black border-2"
             aria-label="Previous testimonial"
           >
             <ArrowLeft className="text-black cursor-pointer" size={24} />
@@ -84,7 +84,7 @@ const Testimonials = () => {
           {/* Next Button */}
           <button 
             onClick={goToNext}
-            className="absolute -right-4 z-10 bg-white rounded-full p-2 shadow-md hover:bg-gray-100 transition-all border-2 border-black"
+            className="absolute -right-4 z-10 bg-white rounded-full p-2  hover:bg-gray-100 transition-all border-2 border-black"
             aria-label="Next testimonial"
           >
             <ArrowRight className="text-black cursor-pointer" size={24} />
@@ -93,7 +93,7 @@ const Testimonials = () => {
 
         {/* Bottom down arrow */}
         <div className="flex justify-center mt-8">
-          <div className="rounded-full p-2 border-2 border-black  shadow-sm">
+          <div className="rounded-full p-2 border-2 border-black  ">
            <ArrowDown  className="text-black cursor-pointer" size={24} onClick={scrollToNextSection}  />
           </div>
         </div>

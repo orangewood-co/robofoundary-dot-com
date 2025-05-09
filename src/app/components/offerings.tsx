@@ -48,63 +48,63 @@ const Offerings = () => {
         </h1>
 
         {/* Top row - two cards side by side */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          {/* First Card - Year-Long Semester Courses - with relative positioning */}
-          <div className="bg-white rounded-lg p-6 border-2 border-black shadow-md relative z-10">
-            <h2 className="text-xl md:text-2xl font-bold mb-2 text-black">
-              Year-Long Semester Courses
-            </h2>
-            <p className="text-gray-700 font-semibold text-sm">
-              Credit-based programs with hands-on robotics, AI, and automation
-              training, aligned to university curricula for job-ready graduates.
-            </p>
-          </div>
-
-          {/* Second Card - Workshops & Training Programs */}
-          <div className="bg-[#B7B7B7] rounded-lg p-6 text-black shadow-md flex flex-col md:flex-row relative overflow-visible">
-            <div className="md:w-2/3 pr-4">
-              <h2 className="text-xl md:text-2xl font-bold mb-2">
-                Comprehensive Workshops & In-Depth Training Programs
+        <div className="flex flex-col md:flex-row gap-6 mb-6">
+          {/* First Card */}
+          <div className="flex-1 lg:max-w-[340px]">
+            <div className="bg-white rounded-lg p-6 border-2 border-black  relative z-10 flex flex-col justify-between h-full">
+              <h2 className="text-xl md:text-2xl font-bold mb-4 text-black">
+                Year-Long Semester Courses
               </h2>
-              <p className="text-black  text-sm">
-                We conduct hands-on robotics workshops, bringing academia and
-                industry by equipping students with real-world skills over 2 to
-                3 months.
+              <p className="text-gray-700 font-semibold text-sm mt-auto">
+                Credit-based programs with hands-on robotics, AI, and automation
+                training, aligned to university curricula for job-ready
+                graduates.
+              </p>
+            </div>
+          </div>
+          {/* Second Card */}
+            <div className="flex-[2] bg-[#B7B7B7] rounded-lg p-6 text-black  flex flex-col md:flex-row relative overflow-visible">
+            <div className="md:w-2/3 pr-4">
+              <h2 className="text-xl md:text-2xl font-bold mb-4">
+              Comprehensive Workshops & In-Depth Training Programs
+              </h2>
+              <p className="text-black text-sm mt-18">
+              We conduct hands-on robotics workshops, bringing academia and
+              industry by equipping students with real-world skills over 2 to
+              3 months.
               </p>
             </div>
             <div className="md:w-1/3 flex items-end justify-center mt-6 md:mt-0 absolute md:relative right-0 md:right-[-60px] bottom-[-25px] z-10 hidden md:flex">
               <Image
-                src="/owl-6.5.png"
-                alt="Robotic Arm"
-                width={200}
-                height={200}
-                className="object-contain"
+              src="/owl-6.5.png"
+              alt="Robotic Arm"
+              width={200}
+              height={200}
+              className="object-contain"
               />
             </div>
-          </div>
+            </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mb-8">
-          <div className="md:col-span-8 bg-[#272828] text-white rounded-lg p-6 sm:p-8 flex flex-col md:flex-row h-full">
-            {/* Image container - left side with circuit pattern */}
-            <div className="md:w-2/5 flex items-center justify-center mb-6 md:mb-0">
-              <div className="relative w-full h-48 md:h-full">
-                <Image
-                  src="/ai.png"
-                  alt="Circuit Pattern"
-                  width={400}
-                  height={400}
-                  className="object-contain md:object-cover h-full"
-                />
-              </div>
+          <div className="relative md:col-span-8 bg-[#272828] text-white rounded-lg p-0 sm:p-0 flex flex-col md:flex-row h-auto overflow-hidden">
+            {/* Image container - absolutely positioned to touch the left edge */}
+            <div className="absolute left-0 top-0 bottom-0 w-2/5 h-full z-0">
+              <Image
+                src="/ai.svg"
+                alt="Circuit Pattern"
+                fill
+                className="object-cover object-left h-full w-full"
+                priority
+              />
             </div>
 
             {/* Text content - right side with proper spacing and alignment */}
-            <div className="md:w-3/5 md:pl-8 flex flex-col justify-center">
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-center md:text-left">
+            <div className="relative z-10 md:ml-[40%] w-full p-4 sm:p-6 flex flex-col justify-center">
+              <h2 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-3 text-center md:text-left">
                 Value-Added Courses, Placement and Training Programs
               </h2>
-              <p className="text-sm sm:text-base md:text-lg text-center md:text-left">
+              <p className="text-sm sm:text-base text-center md:text-left">
                 Specialized courses available for university credit, focusing on
                 building advanced skills and enhancing employability. These
                 programs provide students with valuable experience that
@@ -130,7 +130,7 @@ const Offerings = () => {
         <div className="flex justify-center mt-8">
           <button
             onClick={scrollToNextSection}
-            className="rounded-full p-2 border-2 border-black text-black shadow-sm hover:bg-gray-100 transition-colors cursor-pointer"
+            className="rounded-full p-2 border-2 border-black text-black  hover:bg-gray-100 transition-colors cursor-pointer"
             aria-label="Scroll to next section"
           >
             <ArrowDown className="w-5 h-5 cursor-pointer" />

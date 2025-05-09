@@ -130,13 +130,13 @@ const Community = () => {
         </div>
       </div>
 
-      <div className="">
+      <div className=" w-full h-auto bg-[#F0F0F0] flex items-center justify-center">  
         <Image
-          src="/testimonial.png"
+          src="/testimonial.svg"
           alt="Zigzag Pattern"
-          width={140}
-          height={140}
-          className="w-full xl:max-h-96 object-bottom "
+          width={200}
+          height={200}
+          className="w-full xl:max-h-96 object-bottom  "
           priority
         />
       </div>
