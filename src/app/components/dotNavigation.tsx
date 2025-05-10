@@ -29,9 +29,9 @@ export default function DotNavigation({
 
   return (
     <div
-      className={`fixed ${
+      className={`fixed hidden sm:flex ${
         side === "left" ? "left-5 sm:left-8 md:left-12" : "right-5 sm:right-8 md:right-12"
-      } top-1/2 -translate-y-1/2 flex flex-col gap-3 sm:gap-4 ${className} z-30`}
+      } top-1/2 -translate-y-1/2 flex-col gap-3 sm:gap-4 ${className} z-30`}
     >
       {sections.map((section) => (
         <button
