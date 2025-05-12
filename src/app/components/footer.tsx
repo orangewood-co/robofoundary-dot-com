@@ -372,14 +372,12 @@ const Footer = () => {
           
           <div className="flex space-x-3 sm:space-x-6 text-sm sm:text-base">
             <motion.div whileHover={{ y: -2 }}>
-              <Link href="/terms" className="hover:underline">Terms</Link>
+              <Link href="/terms" className="hover:underline">Terms and Conditions</Link>
             </motion.div>
             <motion.div whileHover={{ y: -2 }}>
-              <Link href="/privacy" className="hover:underline">Privacy</Link>
+              <Link href="/privacy" className="hover:underline">Privacy Policy</Link>
             </motion.div>
-            <motion.div whileHover={{ y: -2 }}>
-              <Link href="/cookies" className="hover:underline">Cookies</Link>
-            </motion.div>
+            
           </div>
         </div>
       </motion.div>
