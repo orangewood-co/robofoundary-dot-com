@@ -4,11 +4,25 @@ import Image from "next/image";
 import { ArrowDown, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useContactModal } from "@/app/hooks/use-contact-modal";
+import ContactModal from "./contact";
+import HeroVideoCarousel from "./videoCarousel";
+import ImageCarousel from "./imageCarousel";  
+
 
 const Hero = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
-  
+  const { isOpen, openModal, closeModal } = useContactModal();
+
+
+const heroImages = [
+ { src: "/images/IIT.png", alt: "IIT" },
+  { src: "/images/IIT_gandhinagar.png", alt: "Students building robots" },
+  { src: "/images/educational_program.jpg", alt: "Vega educational program" },
+];
+
+
   // Set isLoaded to true after component mounts
   useEffect(() => {
     setIsLoaded(true);
@@ -36,9 +50,13 @@ const Hero = () => {
     targetId: string
   ) => {
     e.preventDefault();
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: "smooth" });
+    if (targetId === "contact") {
+      openModal(); // Open the contact modal
+    } else {
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth" });
+      }
     }
     setMobileMenuOpen(false);
   };
@@ -46,89 +64,90 @@ const Hero = () => {
   // Animation variants
   const navbarVariants = {
     hidden: { y: -100, opacity: 0 },
-    visible: { 
-      y: 0, 
+    visible: {
+      y: 0,
       opacity: 1,
-      transition: { 
+      transition: {
         duration: 0.6,
-        ease: "easeOut" 
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
   const headingVariants = {
     hidden: { y: 40, opacity: 0 },
-    visible: { 
-      y: 0, 
+    visible: {
+      y: 0,
       opacity: 1,
-      transition: { 
+      transition: {
         duration: 0.8,
         delay: 0.3,
-        ease: "easeOut" 
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
   const textVariants = {
     hidden: { y: 30, opacity: 0 },
-    visible: { 
-      y: 0, 
+    visible: {
+      y: 0,
       opacity: 1,
-      transition: { 
+      transition: {
         duration: 0.7,
         delay: 0.5,
-        ease: "easeOut" 
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
   const buttonVariants = {
     hidden: { scale: 0.8, opacity: 0 },
-    visible: { 
-      scale: 1, 
+    visible: {
+      scale: 1,
       opacity: 1,
-      transition: { 
+      transition: {
         duration: 0.5,
         delay: 0.7,
         type: "spring",
         stiffness: 200,
-      }
-    }
+      },
+    },
   };
 
   const imageContainerVariants = {
     hidden: { y: 60, opacity: 0 },
-    visible: { 
-      y: 0, 
+    visible: {
+      y: 0,
       opacity: 1,
-      transition: { 
+      transition: {
         duration: 0.9,
         delay: 0.6,
-        ease: "easeOut" 
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
   const arrowVariants = {
     hidden: { y: -20, opacity: 0 },
-    visible: { 
-      y: 0, 
+    visible: {
+      y: 0,
       opacity: 1,
-      transition: { 
+      transition: {
         duration: 0.5,
         delay: 1.2,
         ease: "easeOut",
         repeat: Infinity,
         repeatType: "reverse",
-        repeatDelay: 1.5
-      }
-    }
+        repeatDelay: 1.5,
+      },
+    },
   };
 
   return (
     <div id="top" className="bg-white text-black overflow-x-hidden">
+      <ContactModal isOpen={isOpen} onClose={closeModal} />
       {/* Navbar */}
-      <motion.div 
+      <motion.div
         className="sticky top-0 z-40 flex justify-center w-full py-3 sm:py-4 px-3"
         initial="hidden"
         animate={isLoaded ? "visible" : "hidden"}
@@ -240,8 +259,9 @@ const Hero = () => {
             <a
               href="#contact"
               onClick={(e) => handleNavClick(e, "contact")}
-              className="w-full text-center px-4 py-3 text-xl font-medium rounded-full transition-colors
-                 bg-black text-white mt-4"
+              className="inline-block px-5 sm:px-6 md:px-8 py-2 sm:py-3 text-lg sm:text-xl md:text-2xl text-black  font-semibold 
+   rounded-full hover:bg-opacity-90 transition-all duration-300
+  hover:scale-105 hover:shadow-md mb-6 sm:mb-8"
             >
               Contact Us
             </a>
@@ -252,7 +272,7 @@ const Hero = () => {
       {/* Hero content */}
       <div className="flex items-center justify-center pt-4 sm:pt-8 md:pt-12">
         <div className="max-w-5xl mx-auto text-center px-4 py-6 sm:py-12">
-          <motion.h1 
+          <motion.h1
             className="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-4 sm:mb-6 text-black tracking-tighter"
             initial="hidden"
             animate={isLoaded ? "visible" : "hidden"}
@@ -261,13 +281,15 @@ const Hero = () => {
             Welcome to Vega
           </motion.h1>
 
-          <motion.p 
+          <motion.p
             className="text-sm sm:text-base md:text-lg mb-6 sm:mb-8 leading-relaxed max-w-xl mx-auto"
             initial="hidden"
             animate={isLoaded ? "visible" : "hidden"}
             variants={textVariants}
           >
-            Vega-Edu is at the forefront of robotics and AI innovation, dedicated to bridging theoretical learning with practical industry applications. We specialize in intelligent robotic systems, machine vision integration, and industrial automation solutions.
+            At Vega, we bridge the gap between theory and real-world tech. From
+            intelligent robotic systems to hands-on learning, we empower the
+            next-gen of innovators with tools that matter.
           </motion.p>
 
           <motion.a
@@ -288,7 +310,7 @@ const Hero = () => {
       </div>
 
       {/* Image container */}
-      <motion.div 
+      {/* <motion.div
         className="flex justify-center w-full bg-white py-4 sm:py-6"
         initial="hidden"
         animate={isLoaded ? "visible" : "hidden"}
@@ -306,14 +328,16 @@ const Hero = () => {
             />
           </div>
         </div>
-      </motion.div>
+      </motion.div> */}
+
+      {/* <HeroVideoCarousel /> */}
+        <ImageCarousel images={heroImages} />
 
       {/* Down arrow */}
-      <motion.div 
+      <motion.div
         className="flex justify-center py-6"
         initial="hidden"
         animate={isLoaded ? "visible" : "hidden"}
-        
       >
         <button
           onClick={scrollToNextSection}

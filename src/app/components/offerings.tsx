@@ -234,7 +234,7 @@ const Offerings = () => {
                 animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                 transition={{ duration: 0.5, delay: 0.8 }}
               >
-                Value-Added Courses, Placement and Training Programs
+                Value-Added Courses, Placement, Faculty Training and Training Programs
               </motion.h2>
               <motion.p 
                 className="text-sm sm:text-base text-center md:text-left"
