@@ -7,21 +7,25 @@ import { motion } from "framer-motion";
 import { useContactModal } from "@/app/hooks/use-contact-modal";
 import ContactModal from "./contact";
 import HeroVideoCarousel from "./videoCarousel";
-import ImageCarousel from "./imageCarousel";  
-
+import ImageCarousel from "./imageCarousel";
+import IIT_Jammu from "../../../public/IIT.png";
+import IIT_Gandhinagar from "../../../public/IIT_gandhinagar.png";
+import Workshop from "../../../public/workshop.png";
+import Stanford from "../../../public/stanford.png";
+import Abes from "../../../public/abes.png";
 
 const Hero = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const { isOpen, openModal, closeModal } = useContactModal();
 
-
-const heroImages = [
- { src: "/images/IIT.png", alt: "IIT" },
-  { src: "/images/IIT_gandhinagar.png", alt: "Students building robots" },
-  { src: "/images/educational_program.jpg", alt: "Vega educational program" },
-];
-
+  const heroImages = [
+    { src: IIT_Jammu, alt: "IIT Jammu" },
+    { src: IIT_Gandhinagar, alt: "IIT Gandhi Nagar" },
+    { src: Workshop, alt: "Workshop" },
+    { src: Stanford, alt: "Stanford University" },
+    { src: Abes, alt: "Abes Engineering College" },
+  ];
 
   // Set isLoaded to true after component mounts
   useEffect(() => {
@@ -331,7 +335,7 @@ const heroImages = [
       </motion.div> */}
 
       {/* <HeroVideoCarousel /> */}
-        <ImageCarousel images={heroImages} />
+      <ImageCarousel images={heroImages} />
 
       {/* Down arrow */}
       <motion.div

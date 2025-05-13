@@ -4,10 +4,11 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, PanInfo } from "framer-motion";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { StaticImageData } from "next/image";
 
 interface ImageCarouselProps {
   images: {
-    src: string;
+    src: string | StaticImageData;
     alt: string;
   }[];
 }
