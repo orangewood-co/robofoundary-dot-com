@@ -82,9 +82,9 @@ const Community = () => {
 
   const features = [
     { title: "Community Events", icon: "/star_1.png" },
-    { title: "Learning Resources", icon: "/black_white-star.png" },
+    { title: "Learning Resources", icon: "/color_star.png" },
     { title: "Expert Mentoring", icon: "/star_1.png" },
-    { title: "Industry Connect", icon: "/black_white-star.png" },
+    { title: "Industry Connect", icon:"/color_star.png"  },
   ];
 
   // Enhanced animation variants

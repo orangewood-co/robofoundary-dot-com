@@ -7,12 +7,18 @@ import { motion } from "framer-motion";
 import { useContactModal } from "@/app/hooks/use-contact-modal";
 import ContactModal from "./contact";
 import HeroVideoCarousel from "./videoCarousel";
+// import ImageCarousel from "./imageCarousel";
+// import IIT_Jammu from "../../../public/IIT.png";
+// import IIT_Gandhinagar from "../../../public/IIT_gandhinagar.png";
+// import Workshop from "../../../public/workshop.png";
+// import Stanford from "../../../public/stanford.png";
+// import Abes from "../../../public/abes.png";
+import Vega1 from "../../../public/vega-1.jpg";
+import Vega2 from "../../../public/vega-2.jpg";
+import Vega3 from "../../../public/vega-3.jpg";
+import Vega4 from "../../../public/vega-4.jpg";
+import Vega5 from "../../../public/vega-5.jpg";
 import ImageCarousel from "./imageCarousel";
-import IIT_Jammu from "../../../public/IIT.png";
-import IIT_Gandhinagar from "../../../public/IIT_gandhinagar.png";
-import Workshop from "../../../public/workshop.png";
-import Stanford from "../../../public/stanford.png";
-import Abes from "../../../public/abes.png";
 
 const Hero = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -20,11 +26,11 @@ const Hero = () => {
   const { isOpen, openModal, closeModal } = useContactModal();
 
   const heroImages = [
-    { src: IIT_Jammu, alt: "IIT Jammu" },
-    { src: IIT_Gandhinagar, alt: "IIT Gandhi Nagar" },
-    { src: Workshop, alt: "Workshop" },
-    { src: Stanford, alt: "Stanford University" },
-    { src: Abes, alt: "Abes Engineering College" },
+    { src: Vega1, alt: "IIT Jammu" },
+    { src: Vega2, alt: "IIT Gandhi Nagar" },
+    { src: Vega3, alt: "Workshop" },
+    { src: Vega4, alt: "Stanford University" },
+    { src: Vega5, alt: "Abes Engineering College" },
   ];
 
   // Set isLoaded to true after component mounts

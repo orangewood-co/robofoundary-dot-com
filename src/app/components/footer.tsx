@@ -338,7 +338,7 @@ const Footer = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <Link
-                  href="https://www.instagram.com"
+                  href="https://www.instagram.com/vegaedu_/?g=5"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center border border-gray-400 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 w-fit hover:bg-gray-100"
