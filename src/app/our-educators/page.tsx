@@ -26,7 +26,7 @@ interface Educator {
 const educators: Educator[] = [
   {
     id: 1,
-    name: "Dr. Aisha Johnson",
+    name: "Chetan Patil",
     role: "Robotics Specialist",
     image: "/images/educators/educator1.jpg",
     bio: "Ph.D in Robotics from MIT with over 10 years of experience in designing intelligent robotic systems.",
