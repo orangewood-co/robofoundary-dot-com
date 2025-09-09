@@ -7,19 +7,22 @@ import { motion, AnimatePresence } from "framer-motion";
 const Testimonials = () => {
   const [hasAnimated, setHasAnimated] = useState(false);
   const sectionRef = useRef(null);
-  
+
   // Track if we've entered view at least once
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && !hasAnimated) {
-        setHasAnimated(true);
-      }
-    }, { threshold: 0.2 });
-    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
-    
+
     return () => {
       if (sectionRef.current) {
         observer.unobserve(sectionRef.current);
@@ -28,47 +31,49 @@ const Testimonials = () => {
   }, [hasAnimated]);
 
   const scrollToNextSection = () => {
-    const nextSection = document.getElementById('offerings');
-    
+    const nextSection = document.getElementById("offerings");
+
     if (nextSection) {
-      nextSection.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
+      nextSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
       });
     }
   };
 
   const testimonials = [
     {
-      content: "Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.",
-      author: "LOREM IPSUM"
+      content:
+        "The instructor was knowledgeable and approachable, answering questions effectively and providing relevant examples. It was helpful to have one-on-one support when working through more complex aspects of ROS and troubleshooting code.",
+      author: "Dr. Kumud Tiwari",
     },
     {
-      content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
-      author: "JOHN DOE"
+      content: "VERY GOOD WORKSHOP",
+      author: "YOGESH KUMAR VERMA",
     },
     {
-      content: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.",
-      author: "JANE SMITH"
-    }
+      content:
+        "The practical exercises provided a solid understanding of how to apply ROS concepts in real-world scenarios. Learning by doing, such as creating nodes, publishing/subscribing to topics, and using roslaunch files, made complex ideas more tangible and easier to grasp.",
+      author: "Shresth Srivastava",
+    },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const testimonialRef = useRef<HTMLDivElement>(null);
-  
+
   // The required minimum distance between touchStart and touchEnd to be detected as a swipe
   const minSwipeDistance = 50;
 
   const goToPrevious = () => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
     );
   };
 
   const goToNext = () => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
     );
   };
@@ -85,11 +90,11 @@ const Testimonials = () => {
 
   const onTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
-    
+
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > minSwipeDistance;
     const isRightSwipe = distance < -minSwipeDistance;
-    
+
     // Determine direction and navigate
     if (isLeftSwipe) {
       goToNext();
@@ -97,7 +102,7 @@ const Testimonials = () => {
     if (isRightSwipe) {
       goToPrevious();
     }
-    
+
     // Reset values
     setTouchStart(null);
     setTouchEnd(null);
@@ -107,44 +112,44 @@ const Testimonials = () => {
   const getDirection = (index: number) => {
     if (index > currentIndex) return 100; // Next item comes from the right
     if (index < currentIndex) return -100; // Previous item comes from the left
-    
+
     // Handle edge cases (wrapping around)
     if (index === 0 && currentIndex === testimonials.length - 1) return -100;
     if (index === testimonials.length - 1 && currentIndex === 0) return 100;
-    
+
     return 0;
   };
 
   // Animation effect for down arrow
   const arrowAnimation = {
     initial: { opacity: 0, y: -10 },
-    animate: { 
-      opacity: 1, 
+    animate: {
+      opacity: 1,
       y: 0,
-      transition: { 
-        delay: 0.8, 
-        duration: 0.5 
-      }
+      transition: {
+        delay: 0.8,
+        duration: 0.5,
+      },
     },
-    hover: { 
-      y: [0, 3, 0], 
-      transition: { 
-        duration: 1, 
-        repeat: Infinity 
-      } 
-    }
+    hover: {
+      y: [0, 3, 0],
+      transition: {
+        duration: 1,
+        repeat: Infinity,
+      },
+    },
   };
 
   return (
-    <div 
-      id="testimonials" 
+    <div
+      id="testimonials"
       className="relative bg-[#F1F1F1] overflow-hidden"
       ref={sectionRef}
     >
       {/* Container that follows the grid */}
       <div className="relative max-w-5xl mx-auto px-4 py-16">
         {/* Heading */}
-        <motion.h1 
+        <motion.h1
           className="text-4xl md:text-5xl font-bold text-center mb-12 text-black"
           initial={{ opacity: 0, y: -20 }}
           animate={hasAnimated ? { opacity: 1, y: 0 } : {}}
@@ -156,7 +161,7 @@ const Testimonials = () => {
         {/* Testimonial Content with Navigation */}
         <div className="relative flex items-center mb-8">
           {/* Previous Button - hidden on small screens */}
-          <motion.button 
+          <motion.button
             onClick={goToPrevious}
             className="absolute -left-4 z-10 bg-white rounded-full p-2 hover:bg-gray-100 transition-all border-black border-2 hidden sm:block"
             aria-label="Previous testimonial"
@@ -171,29 +176,29 @@ const Testimonials = () => {
 
           {/* Testimonial Text with AnimatePresence for transitions */}
           <AnimatePresence mode="wait">
-            <motion.div 
+            <motion.div
               key={currentIndex}
               ref={testimonialRef}
               onTouchStart={onTouchStart}
               onTouchMove={onTouchMove}
               onTouchEnd={onTouchEnd}
               className="text-center px-6 sm:px-16 md:px-24 w-full touch-pan-y"
-              initial={{ 
-                opacity: 0, 
-                x: getDirection(currentIndex)
+              initial={{
+                opacity: 0,
+                x: getDirection(currentIndex),
               }}
-              animate={{ 
-                opacity: 1, 
-                x: 0 
+              animate={{
+                opacity: 1,
+                x: 0,
               }}
-              exit={{ 
-                opacity: 0, 
-                x: -getDirection(currentIndex)
+              exit={{
+                opacity: 0,
+                x: -getDirection(currentIndex),
               }}
               transition={{ duration: 0.4 }}
             >
               <div className="relative overflow-hidden">
-                <motion.p 
+                <motion.p
                   className="text-lg text-black mb-6 max-w-3xl mx-auto"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -201,7 +206,7 @@ const Testimonials = () => {
                 >
                   "{testimonials[currentIndex].content}"
                 </motion.p>
-                <motion.p 
+                <motion.p
                   className="font-medium text-[#F3B07C]"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -210,7 +215,7 @@ const Testimonials = () => {
                   - {testimonials[currentIndex].author}
                 </motion.p>
               </div>
-              
+
               {/* Mobile swipe indicator - only shown on small screens */}
               <div className="flex justify-center mt-6 sm:hidden">
                 <div className="flex items-center ml-2">
@@ -222,7 +227,7 @@ const Testimonials = () => {
           </AnimatePresence>
 
           {/* Next Button - hidden on small screens */}
-          <motion.button 
+          <motion.button
             onClick={goToNext}
             className="absolute -right-4 z-10 bg-white rounded-full p-2 hover:bg-gray-100 transition-all border-2 border-black hidden sm:block"
             aria-label="Next testimonial"
@@ -243,14 +248,14 @@ const Testimonials = () => {
               key={index}
               onClick={() => setCurrentIndex(index)}
               className={`w-2 h-2 rounded-full transition-all ${
-                currentIndex === index ? 'bg-black w-4' : 'bg-gray-400'
+                currentIndex === index ? "bg-black w-4" : "bg-gray-400"
               }`}
               aria-label={`Go to testimonial ${index + 1}`}
               initial={{ opacity: 0, scale: 0 }}
               animate={hasAnimated ? { opacity: 1, scale: 1 } : {}}
-              transition={{ 
-                duration: 0.3, 
-                delay: 0.5 + (index * 0.1)
+              transition={{
+                duration: 0.3,
+                delay: 0.5 + index * 0.1,
               }}
               whileHover={{ scale: 1.2 }}
             />
@@ -259,7 +264,7 @@ const Testimonials = () => {
 
         {/* Bottom down arrow with bounce animation */}
         <div className="flex justify-center mt-12">
-          <motion.button 
+          <motion.button
             onClick={scrollToNextSection}
             className="rounded-full p-2 border-2 border-black hover:bg-gray-100 transition-all cursor-pointer"
             aria-label="Scroll to next section"

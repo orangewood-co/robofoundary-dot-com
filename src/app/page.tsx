@@ -9,11 +9,11 @@ import PageLayout from "./components/pageLayout";
 export default function Home() {
   return (
     <PageLayout>
-    <Hero />
-    <Community />
-    <Testimonials />
-    <Offerings />
-    <Footer />
+      <Hero />
+      <Community />
+      <Testimonials />
+      <Offerings />
+      <Footer />
     </PageLayout>
   );
 }

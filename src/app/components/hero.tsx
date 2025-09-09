@@ -53,6 +53,7 @@ const Hero = () => {
     { name: "Home", href: "#top" },
     { name: "Community", href: "#community" },
     { name: "Offerings", href: "#offerings" },
+    { name: "Programs", href: "https://vegaskool.com", external: true },
   ];
 
   const handleNavClick = (
@@ -191,30 +192,38 @@ const Hero = () => {
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center space-x-4 lg:space-x-6">
-            {navLinks.map((link, index) => (
-              <motion.a
-                key={link.name}
-                href={
-                  link.name === "Home"
-                    ? "#top"
-                    : `#${link.name.toLowerCase().replace(" ", "-")}`
-                }
-                onClick={(e) => {
-                  const targetId =
-                    link.name === "Home"
-                      ? "top"
-                      : link.name.toLowerCase().replace(" ", "-");
-                  handleNavClick(e, targetId);
-                }}
-                className="px-2 md:px-3 py-1.5 md:py-2 text-base md:text-lg font-medium rounded-md transition-colors cursor-pointer
+            {navLinks.map((link, index) => {
+              const isExternal = Boolean(link.external);
+              const href = isExternal
+                ? link.href
+                : link.name === "Home"
+                ? "#top"
+                : `#${link.name.toLowerCase().replace(" ", "-")}`;
+
+              return (
+                <motion.a
+                  key={link.name}
+                  href={href}
+                  onClick={(e) => {
+                    if (isExternal) return; // allow normal navigation for externals
+                    const targetId =
+                      link.name === "Home"
+                        ? "top"
+                        : link.name.toLowerCase().replace(" ", "-");
+                    handleNavClick(e, targetId);
+                  }}
+                  className="px-2 md:px-3 py-1.5 md:py-2 text-base md:text-lg font-medium rounded-md transition-colors cursor-pointer
                   text-gray-700 hover:text-gray-900 hover:bg-gray-100"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.8 + index * 0.1 }}
-              >
-                {link.name}
-              </motion.a>
-            ))}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: 0.8 + index * 0.1 }}
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noopener noreferrer" : undefined}
+                >
+                  {link.name}
+                </motion.a>
+              );
+            })}
 
             {/* Special styling for Contact button */}
             <motion.a
@@ -245,27 +254,35 @@ const Hero = () => {
             </button>
           </div>
           <nav className="flex flex-col items-center space-y-4 p-4">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={
-                  link.name === "Home"
-                    ? "#top"
-                    : `#${link.name.toLowerCase().replace(" ", "-")}`
-                }
-                onClick={(e) => {
-                  const targetId =
-                    link.name === "Home"
-                      ? "top"
-                      : link.name.toLowerCase().replace(" ", "-");
-                  handleNavClick(e, targetId);
-                }}
-                className="px-4 py-2 text-xl font-medium w-full text-center rounded-md transition-colors
+            {navLinks.map((link) => {
+              const isExternal = Boolean(link.external);
+              const href = isExternal
+                ? link.href
+                : link.name === "Home"
+                ? "#top"
+                : `#${link.name.toLowerCase().replace(" ", "-")}`;
+
+              return (
+                <a
+                  key={link.name}
+                  href={href}
+                  onClick={(e) => {
+                    if (isExternal) return; // allow normal navigation
+                    const targetId =
+                      link.name === "Home"
+                        ? "top"
+                        : link.name.toLowerCase().replace(" ", "-");
+                    handleNavClick(e, targetId);
+                  }}
+                  className="px-4 py-2 text-xl font-medium w-full text-center rounded-md transition-colors
                   text-gray-700 hover:text-gray-900 hover:bg-gray-100"
-              >
-                {link.name}
-              </a>
-            ))}
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noopener noreferrer" : undefined}
+                >
+                  {link.name}
+                </a>
+              );
+            })}
             <a
               href="#contact"
               onClick={(e) => handleNavClick(e, "contact")}
