@@ -98,12 +98,12 @@ const PrivacyPolicyPage = () => {
           <motion.div className="p-6 md:p-12" variants={staggerContainer}>
             <motion.p className="text-lg text-gray-800 mb-10" variants={fadeIn}>
               This Privacy Policy document contains types of information that is
-              collected and recorded by Vegaskool Inc and how we use it. If you
+              collected and recorded by RoboFoundry and how we use it. If you
               have additional questions or require more information about our
               Privacy Policy, do not hesitate to contact us. This Privacy Policy
               applies only to our online activities and is valid for visitors to
               our website with regards to the information that they shared
-              and/or collect in Vegaskool. This policy is not applicable to any
+              and/or collect in RoboFoundry. This policy is not applicable to any
               information collected offline or via channels other than this
               website.
             </motion.p>

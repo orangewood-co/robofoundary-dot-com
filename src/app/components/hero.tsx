@@ -39,7 +39,7 @@ const Hero = () => {
   }, []);
 
   const scrollToNextSection = () => {
-    const nextSection = document.getElementById("community");
+    const nextSection = document.getElementById("teach");
 
     if (nextSection) {
       nextSection.scrollIntoView({
@@ -51,9 +51,10 @@ const Hero = () => {
 
   const navLinks = [
     { name: "Home", href: "#top" },
+    { name: "What We Teach", href: "#teach" },
+    { name: "Programs", href: "#offerings" },
+    { name: "Mentors", href: "#mentors" },
     { name: "Community", href: "#community" },
-    { name: "Offerings", href: "#offerings" },
-    { name: "Programs", href: "https://vegaskool.com", external: true },
   ];
 
   const handleNavClick = (
@@ -166,14 +167,10 @@ const Hero = () => {
       >
         <div className="flex items-center justify-between max-w-5xl w-full mx-auto px-3 sm:px-4 border-2 border-black rounded-full h-14 md:h-16 bg-white backdrop-blur-sm">
           <div className="flex items-center">
-            <Link href="/">
-              <Image
-                src="/vega.png"
-                alt="vega Logo"
-                width={120}
-                height={40}
-                className="w-20 sm:w-24 md:w-auto cursor-pointer"
-              />
+            <Link href="/" className="cursor-pointer">
+              <span className="text-lg sm:text-xl md:text-2xl font-bold tracking-tighter text-black">
+                Robo<span className="text-[#F3B07C]">Foundry</span>
+              </span>
             </Link>
           </div>
 
@@ -193,32 +190,18 @@ const Hero = () => {
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center space-x-4 lg:space-x-6">
             {navLinks.map((link, index) => {
-              const isExternal = Boolean(link.external);
-              const href = isExternal
-                ? link.href
-                : link.name === "Home"
-                ? "#top"
-                : `#${link.name.toLowerCase().replace(" ", "-")}`;
+              const targetId = link.href.replace("#", "");
 
               return (
                 <motion.a
                   key={link.name}
-                  href={href}
-                  onClick={(e) => {
-                    if (isExternal) return; // allow normal navigation for externals
-                    const targetId =
-                      link.name === "Home"
-                        ? "top"
-                        : link.name.toLowerCase().replace(" ", "-");
-                    handleNavClick(e, targetId);
-                  }}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, targetId)}
                   className="px-2 md:px-3 py-1.5 md:py-2 text-base md:text-lg font-medium rounded-md transition-colors cursor-pointer
                   text-gray-700 hover:text-gray-900 hover:bg-gray-100"
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: 0.8 + index * 0.1 }}
-                  target={isExternal ? "_blank" : undefined}
-                  rel={isExternal ? "noopener noreferrer" : undefined}
                 >
                   {link.name}
                 </motion.a>
@@ -255,29 +238,15 @@ const Hero = () => {
           </div>
           <nav className="flex flex-col items-center space-y-4 p-4">
             {navLinks.map((link) => {
-              const isExternal = Boolean(link.external);
-              const href = isExternal
-                ? link.href
-                : link.name === "Home"
-                ? "#top"
-                : `#${link.name.toLowerCase().replace(" ", "-")}`;
+              const targetId = link.href.replace("#", "");
 
               return (
                 <a
                   key={link.name}
-                  href={href}
-                  onClick={(e) => {
-                    if (isExternal) return; // allow normal navigation
-                    const targetId =
-                      link.name === "Home"
-                        ? "top"
-                        : link.name.toLowerCase().replace(" ", "-");
-                    handleNavClick(e, targetId);
-                  }}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, targetId)}
                   className="px-4 py-2 text-xl font-medium w-full text-center rounded-md transition-colors
                   text-gray-700 hover:text-gray-900 hover:bg-gray-100"
-                  target={isExternal ? "_blank" : undefined}
-                  rel={isExternal ? "noopener noreferrer" : undefined}
                 >
                   {link.name}
                 </a>
@@ -299,40 +268,89 @@ const Hero = () => {
       {/* Hero content */}
       <div className="flex items-center justify-center pt-4 sm:pt-8 md:pt-12">
         <div className="max-w-5xl mx-auto text-center px-4 py-6 sm:py-12">
+          <motion.div
+            className="inline-flex items-center gap-2 px-4 py-1.5 mb-5 sm:mb-7 rounded-full border-2 border-black bg-[#F3B07C]/30 text-xs sm:text-sm font-medium text-black"
+            initial="hidden"
+            animate={isLoaded ? "visible" : "hidden"}
+            variants={textVariants}
+          >
+            Powered by Orangewood Labs · YC W18
+          </motion.div>
+
           <motion.h1
             className="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-4 sm:mb-6 text-black tracking-tighter"
             initial="hidden"
             animate={isLoaded ? "visible" : "hidden"}
             variants={headingVariants}
           >
-            Welcome to Vega
+            Forging Future Roboticists
           </motion.h1>
 
           <motion.p
-            className="text-sm sm:text-base md:text-lg mb-6 sm:mb-8 leading-relaxed max-w-xl mx-auto"
+            className="text-sm sm:text-base md:text-lg mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto"
             initial="hidden"
             animate={isLoaded ? "visible" : "hidden"}
             variants={textVariants}
           >
-            At Vega, we bridge the gap between theory and real-world tech. From
-            intelligent robotic systems to hands-on learning, we empower the
-            next-gen of innovators with tools that matter.
+            Learn Robotics, AI, ROS2, Computer Vision, and Autonomous Systems
+            through real hardware, industry mentors, and hands-on projects — not
+            just slides.
           </motion.p>
 
-          <motion.a
-            href="#contact"
-            onClick={(e) => handleNavClick(e, "contact")}
-            className="inline-block px-5 sm:px-6 md:px-8 py-2 sm:py-3 text-lg sm:text-xl md:text-2xl text-black border-2 font-semibold 
-            bg-[#F3B07C] rounded-full hover:bg-opacity-90 transition-all duration-300
-            hover:scale-105 hover:shadow-md mb-6 sm:mb-8"
+          <motion.div
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-10 sm:mb-12"
             initial="hidden"
             animate={isLoaded ? "visible" : "hidden"}
             variants={buttonVariants}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
           >
-            Contact Us
-          </motion.a>
+            <motion.a
+              href="#offerings"
+              onClick={(e) => handleNavClick(e, "offerings")}
+              className="inline-block px-5 sm:px-6 md:px-8 py-2 sm:py-3 text-base sm:text-lg md:text-xl text-black border-2 border-black font-semibold 
+              bg-[#F3B07C] rounded-full transition-all duration-300 hover:shadow-md"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Explore Programs
+            </motion.a>
+            <motion.a
+              href="#contact"
+              onClick={(e) => handleNavClick(e, "contact")}
+              className="inline-block px-5 sm:px-6 md:px-8 py-2 sm:py-3 text-base sm:text-lg md:text-xl text-black border-2 border-black font-semibold 
+              bg-white rounded-full transition-all duration-300 hover:bg-gray-100 hover:shadow-md"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Book Workshop
+            </motion.a>
+          </motion.div>
+
+          {/* Stats row */}
+          <motion.div
+            className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto"
+            initial="hidden"
+            animate={isLoaded ? "visible" : "hidden"}
+            variants={imageContainerVariants}
+          >
+            {[
+              { value: "500+", label: "Students Trained" },
+              { value: "20+", label: "University Partners" },
+              { value: "12", label: "Expert Mentors" },
+              { value: "100%", label: "Hands-on Learning" },
+            ].map((stat) => (
+              <div
+                key={stat.label}
+                className="border-2 border-black rounded-xl sm:rounded-2xl bg-[#F1F1F1] py-4 sm:py-5 px-2"
+              >
+                <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-black">
+                  {stat.value}
+                </p>
+                <p className="text-xs sm:text-sm font-medium text-gray-700 mt-1">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </motion.div>
         </div>
       </div>
 

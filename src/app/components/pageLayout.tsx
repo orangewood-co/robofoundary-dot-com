@@ -16,8 +16,12 @@ export default function PageLayout({ children }: PageLayoutProps) {
 
   const sections: Section[] = [
     { id: "top", name: "Home" },
+    { id: "teach", name: "What We Teach" },
+    { id: "path", name: "Learning Path" },
+    { id: "projects", name: "Projects" },
+    { id: "offerings", name: "Programs" },
+    { id: "mentors", name: "Mentors" },
     { id: "community", name: "Community" },
-    { id: "offerings", name: "Offerings" },
     { id: "footer", name: "Footer" },
   ];
 

@@ -1,16 +1,17 @@
 "use client";
-import { ArrowDown } from "lucide-react";
-import Image from "next/image";
+import { ArrowDown, Check } from "lucide-react";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { useContactModal } from "@/app/hooks/use-contact-modal";
+import ContactModal from "./contact";
 
 const Offerings = () => {
-  // Track if the section is in view
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
-  
+  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
+  const { isOpen, openModal, closeModal } = useContactModal();
+
   const scrollToNextSection = () => {
-    const nextSection = document.getElementById("footer");
+    const nextSection = document.getElementById("workshops");
 
     if (nextSection) {
       nextSection.scrollIntoView({
@@ -20,17 +21,16 @@ const Offerings = () => {
     }
   };
 
-  // Animation variants
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
-      transition: { 
+      transition: {
         duration: 0.6,
-        ease: "easeOut"
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
   const staggerContainer = {
@@ -38,36 +38,10 @@ const Offerings = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.2
-      }
-    }
-  };
-
-  const imageReveal = {
-    hidden: { scale: 0.8, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 15,
-        delay: 0.4
-      }
-    }
-  };
-
-  const floatingAnimation = {
-    hidden: { y: 0 },
-    visible: {
-      y: [0, -10, 0],
-      transition: {
-        duration: 3,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
-    }
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
+      },
+    },
   };
 
   const headingReveal = {
@@ -77,230 +51,243 @@ const Offerings = () => {
       x: 0,
       transition: {
         duration: 0.7,
-        ease: "easeOut"
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
+  const institutional = [
+    {
+      tag: "Program A",
+      title: "Year-Long Semester Courses",
+      audience: "For Universities",
+      description:
+        "Credit-based programs with hands-on robotics, AI, and automation training, fully aligned to university curricula. Includes faculty coordination, lab setup guidance, assessments, and outcome reports.",
+      meta: ["Universities & colleges", "On-campus + hybrid", "1–2 semesters"],
+      dark: false,
+    },
+    {
+      tag: "Program B",
+      title: "Comprehensive Workshops & In-Depth Training",
+      audience: "1–10 Days",
+      description:
+        "Intensive training programs bringing academia and industry together. Students move from fundamentals to building complete robotic systems — weekly hands-on labs, real hardware access, mentor check-ins, and a final project.",
+      meta: ["Universities, student groups", "Hybrid", "2–3 months"],
+      dark: true,
+    },
+    {
+      tag: "Program C",
+      title: "Value-Added Courses, Placement & Faculty Training",
+      audience: "For Universities",
+      description:
+        "Specialized courses available for university credit, focused on employability. Includes placement-oriented training, resume and portfolio building, mock technical interviews, and dedicated faculty training programs.",
+      meta: ["Students + faculty", "Flexible", "Custom"],
+      dark: false,
+    },
+  ];
+
+  const summerTracks = [
+    {
+      tag: "Program D · Summer 2026",
+      label: "Advanced Track",
+      title: "Summer Robotics Program",
+      description:
+        "India's most hands-on robotics summer program — powered by Orangewood Labs (YC W18). 3 weeks. Real hardware. Real engineers. A certificate that means something.",
+      audience:
+        "For undergraduate (B.Tech, B.E., B.Sc.), postgraduate (M.Tech, M.Sc., MBA), and working professionals in any field.",
+      perks: [
+        "Internship certificate from Orangewood Labs (YC-backed)",
+        "Real industry project on your portfolio — built on actual hardware",
+        "Engineer recommendations for internship and job applications",
+        "Direct referrals to hardware companies in Orangewood's network",
+        "Lifetime access to the alumni community",
+      ],
+      footer:
+        "₹5,000 all-inclusive · 3 weeks · Hybrid (online + Noida office hardware days) · Starts June 1, 2026",
+    },
+    {
+      tag: "Program E · Summer 2026",
+      label: "High School Track",
+      title: "Summer Robotics Program",
+      description:
+        "Beginner-friendly, expert-managed. No prior coding or robotics experience needed — just curiosity. For Grades 8–12, any stream.",
+      audience:
+        "For high school students in Grades 8–12, any stream. No prior coding or robotics experience needed.",
+      perks: [
+        "Fully managed by experts — parents just sign up",
+        "Real company visit to Orangewood Labs, not a school lab",
+        "Work alongside professional engineers, not just teachers",
+        "Certificate from a YC-backed, internationally recognized company",
+        "The spark that turns curiosity into a future career",
+      ],
+      footer:
+        "₹5,000 all-inclusive · 3 weeks · Grades 8–12, any stream · Hybrid (online + one office visit day) · Starts June 1, 2026",
+    },
+  ];
+
   return (
-    <div 
-      id="offerings" 
-      className="relative py-20 bg-[#F1F1F1] overflow-hidden"
+    <div
+      id="offerings"
+      className="relative py-16 sm:py-20 bg-[#F1F1F1] overflow-hidden"
       ref={sectionRef}
     >
-      {/* Blue accent shape in top-left - positioned behind elements */}
-      <motion.div 
-        className="absolute inset-0 flex items-start justify-center pointer-events-none"
-        initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 1.2 }}
-      >
-        {/* White glow layer */}
-        <motion.div
-          className="
-            absolute
-            top-8 left-1/3
-            -translate-x-1/2
-            md:top-9
-            lg:top-18
-            flex flex-col items-center
-          "
-          style={{ pointerEvents: "none" }}
-          animate={isInView ? "visible" : "hidden"}
-          variants={floatingAnimation}
-        >
-          <div className="rounded-full w-[350px] h-[350px] bg-white/30 blur-2xl"></div>
-          <motion.div
-            initial={{ rotate: -5 }}
-            animate={isInView ? { rotate: [0, 5, 0, -5, 0] } : { rotate: 0 }}
-            transition={{ 
-              duration: 8, 
-              repeat: Infinity, 
-              ease: "easeInOut" 
-            }}
-          >
-            <Image
-              src="/offerings-vector.png"
-              alt="Star Background"
-              width={200}
-              height={180}
-              className="object-contain relative z-10 -mt-[300px]"
-            />
-          </motion.div>
-        </motion.div>
-      </motion.div>
-
+      <ContactModal isOpen={isOpen} onClose={closeModal} />
       <div className="relative max-w-6xl mx-auto px-4 z-10">
-        {/* Heading - with adjusted positioning for blue accent visibility */}
-        <motion.h1 
-          className="text-6xl md:text-9xl font-bold mb-12 text-black tracking-tight relative z-10"
+        <motion.p
+          className="text-sm sm:text-base font-medium text-[#F3B07C] mb-2"
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={headingReveal}
         >
-          OFFERINGS
+          Programs
+        </motion.p>
+        <motion.h1
+          className="text-4xl sm:text-6xl md:text-7xl font-bold mb-4 text-black tracking-tight"
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={headingReveal}
+        >
+          PROGRAMS
         </motion.h1>
+        <motion.p
+          className="text-base sm:text-lg text-gray-700 max-w-2xl mb-10 sm:mb-12"
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={headingReveal}
+        >
+          From semester-long credit courses to intensive 3-week sprints. Two
+          audiences, one mission: get you doing real robotics with real
+          engineers.
+        </motion.p>
 
-        {/* Top row - two cards side by side */}
-        <motion.div 
-          className="flex flex-col md:flex-row gap-6 mb-6"
+        {/* Institutional programs */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 mb-10 sm:mb-12"
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={staggerContainer}
         >
-          {/* First Card */}
-          <motion.div 
-            className="flex-1 lg:max-w-[340px]"
-            variants={fadeInUp}
-          >
-            <div className="bg-white rounded-lg p-6 border-2 border-black relative z-10 flex flex-col justify-between h-full">
-              <h2 className="text-xl md:text-2xl font-bold mb-4 text-black">
-                Year-Long Semester Courses
-              </h2>
-              <p className="text-gray-700 font-semibold text-sm mt-auto">
-                Credit-based programs with hands-on robotics, AI, and automation
-                training, aligned to university curricula for job-ready
-                graduates.
-              </p>
-            </div>
-          </motion.div>
-          
-          {/* Second Card */}
-          <motion.div 
-            className="flex-[2] bg-[#B7B7B7] rounded-lg p-6 text-black flex flex-col md:flex-row relative overflow-visible"
-            variants={fadeInUp}
-          >
-            <div className="md:w-2/3 pr-4">
-              <h2 className="text-xl md:text-2xl font-bold mb-4">
-                Comprehensive Workshops & In-Depth Training Programs
-              </h2>
-              <p className="text-black text-sm mt-18">
-                We conduct hands-on robotics workshops, bringing academia and
-                industry by equipping students with real-world skills over 2 to
-                3 months.
-              </p>
-            </div>
-            <motion.div 
-              className="md:w-1/3 flex items-end justify-center mt-6 md:mt-0 absolute md:relative right-0 md:right-[-60px] bottom-[-25px] z-10 hidden md:flex"
-              variants={imageReveal}
+          {institutional.map((program) => (
+            <motion.div
+              key={program.tag}
+              className={`rounded-lg p-6 border-2 border-black flex flex-col h-full ${
+                program.dark ? "bg-[#272828] text-white" : "bg-white text-black"
+              }`}
+              variants={fadeInUp}
+              whileHover={{ y: -6, transition: { duration: 0.2 } }}
             >
-              <motion.div
-               
+              <div className="flex items-center justify-between mb-4">
+                <span
+                  className={`text-xs font-semibold uppercase tracking-wide ${
+                    program.dark ? "text-[#F3B07C]" : "text-gray-500"
+                  }`}
+                >
+                  {program.tag}
+                </span>
+                <span
+                  className={`text-xs font-medium px-2 py-1 rounded-full border ${
+                    program.dark
+                      ? "border-white/40 text-white"
+                      : "border-black/30 text-gray-700"
+                  }`}
+                >
+                  {program.audience}
+                </span>
+              </div>
+              <h2 className="text-xl md:text-2xl font-bold mb-3">
+                {program.title}
+              </h2>
+              <p
+                className={`text-sm mb-5 ${
+                  program.dark ? "text-gray-300" : "text-gray-700"
+                }`}
               >
-                <Image
-                  src="/owl-6.5.png"
-                  alt="Robotic Arm"
-                  width={200}
-                  height={200}
-                  className="object-contain"
-                />
-              </motion.div>
+                {program.description}
+              </p>
+              <div className="mt-auto flex flex-wrap gap-2">
+                {program.meta.map((m) => (
+                  <span
+                    key={m}
+                    className={`text-xs px-2.5 py-1 rounded-full ${
+                      program.dark
+                        ? "bg-white/10 text-white"
+                        : "bg-[#F1F1F1] text-gray-700 border border-black/10"
+                    }`}
+                  >
+                    {m}
+                  </span>
+                ))}
+              </div>
             </motion.div>
-          </motion.div>
+          ))}
         </motion.div>
 
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-12 gap-6 mb-8"
+        {/* Summer tracks */}
+        <motion.div
+          className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6"
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={staggerContainer}
-          transition={{ delayChildren: 0.4 }}
         >
-          <motion.div 
-            className="relative md:col-span-8 bg-[#272828] text-white rounded-lg p-0 sm:p-0 flex flex-col md:flex-row h-auto overflow-hidden"
-            variants={fadeInUp}
-          >
-            {/* Image container - absolutely positioned to touch the left edge */}
-            <motion.div 
-              className="absolute left-0 top-0 bottom-0 w-2/5 h-full z-0"
-              initial={{ opacity: 0, x: -20 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
+          {summerTracks.map((track) => (
+            <motion.div
+              key={track.tag}
+              className="bg-white rounded-lg p-6 sm:p-8 border-2 border-black flex flex-col"
+              variants={fadeInUp}
             >
-              <Image
-                src="/ai.svg"
-                alt="Circuit Pattern"
-                fill
-                className="object-cover object-left h-full w-full"
-                priority
-              />
-            </motion.div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                  {track.tag}
+                </span>
+                <span className="text-xs font-bold px-3 py-1 rounded-full bg-[#F3B07C] text-black border-2 border-black">
+                  {track.label}
+                </span>
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold mb-3 text-black">
+                {track.title}
+              </h2>
+              <p className="text-sm text-gray-700 mb-3">{track.description}</p>
+              <p className="text-sm font-medium text-black mb-5">
+                {track.audience}
+              </p>
 
-            {/* Text content - right side with proper spacing and alignment */}
-            <div className="relative z-10 md:ml-[40%] w-full p-4 sm:p-6 flex flex-col justify-center">
-              <motion.h2 
-                className="text-xl sm:text-2xl font-bold mb-2 sm:mb-3 text-center md:text-left"
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-                transition={{ duration: 0.5, delay: 0.8 }}
-              >
-                Value-Added Courses, Placement, Faculty Training and Training Programs
-              </motion.h2>
-              <motion.p 
-                className="text-sm sm:text-base text-center md:text-left"
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-                transition={{ duration: 0.5, delay: 0.9 }}
-              >
-                Specialized courses available for university credit, focusing on
-                building advanced skills and enhancing employability. These
-                programs provide students with valuable experience that
-                contributes to job readiness and career development.
-              </motion.p>
-            </div>
-          </motion.div>
+              <p className="text-sm font-semibold text-black mb-3">
+                What you walk away with
+              </p>
+              <ul className="space-y-2 mb-6">
+                {track.perks.map((perk) => (
+                  <li key={perk} className="flex items-start gap-2 text-sm text-gray-700">
+                    <Check className="w-4 h-4 text-[#F3B07C] flex-shrink-0 mt-0.5" />
+                    <span>{perk}</span>
+                  </li>
+                ))}
+              </ul>
 
-          {/* Vega Logo */}
-          <motion.div 
-            className="md:col-span-4 bg-white rounded-lg p-8 flex items-center justify-center"
-            variants={fadeInUp}
-          >
-            <motion.div 
-              className="relative"
-              initial={{ rotate: 0 }}
-             
-            >
-              <motion.div
-                whileHover={{ 
-                  scale: 1.1,
-                  transition: { duration: 0.3 }
-                }}
+              <p className="text-xs text-gray-600 mb-5 mt-auto">{track.footer}</p>
+              <motion.button
+                onClick={openModal}
+                className="self-start px-6 py-2.5 text-base font-bold rounded-full bg-black text-white hover:bg-gray-800 transition-colors cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.97 }}
               >
-                <Image
-                  src="/vega-black.png"
-                  alt="Vega Logo"
-                  width={120}
-                  height={120}
-                  className="object-contain"
-                />
-              </motion.div>
+                Apply for {track.label}
+              </motion.button>
             </motion.div>
-          </motion.div>
+          ))}
         </motion.div>
-        
-        {/* Bottom down arrow with click functionality */}
-        <motion.div 
-          className="flex justify-center mt-8"
+
+        {/* Down arrow */}
+        <motion.div
+          className="flex justify-center mt-10 sm:mt-12"
           initial={{ opacity: 0, y: -20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
-          transition={{ 
-            duration: 0.5, 
-            delay: 1.2
-          }}
+          transition={{ duration: 0.5, delay: 0.8 }}
         >
           <motion.button
             onClick={scrollToNextSection}
             className="rounded-full p-2 border-2 border-black text-black hover:bg-gray-100 transition-colors cursor-pointer"
             aria-label="Scroll to next section"
             whileHover={{ y: 3 }}
-            animate={isInView ? {
-              y: [0, 3, 0],
-              transition: {
-                duration: 1.5,
-                repeat: Infinity,
-                repeatDelay: 1
-              }
-            } : {}}
           >
             <ArrowDown className="w-5 h-5 cursor-pointer" />
           </motion.button>

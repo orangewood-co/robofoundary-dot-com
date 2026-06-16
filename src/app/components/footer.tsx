@@ -1,7 +1,6 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
-import { Instagram, Linkedin, Mail, Phone } from "lucide-react";
+import { Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import ContactModal from "./contact";
@@ -84,8 +83,43 @@ const Footer = () => {
       variants={fadeIn}
     >
       <ContactModal isOpen={isOpen} onClose={closeModal} />
+
+      {/* Ready to Build Robots CTA */}
+      <motion.div
+        className="px-4 max-w-6xl mx-auto pt-16 sm:pt-20 text-center"
+        variants={fadeIn}
+      >
+        <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-black tracking-tighter mb-4">
+          Ready to Build Robots?
+        </h2>
+        <p className="text-base sm:text-lg text-gray-700 max-w-3xl mx-auto mb-8">
+          Whether you're a student curious about robotics, a professional looking
+          to upskill, or a university wanting to bring industry-grade training to
+          your campus — there's a track built for you. Real hardware. Real
+          engineers. A certificate that means something.
+        </p>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <motion.a
+            href="#offerings"
+            className="px-6 py-3 text-base sm:text-lg font-bold rounded-full bg-[#F3B07C] text-black border-2 border-black transition-all hover:shadow-md"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            Explore Programs
+          </motion.a>
+          <motion.button
+            onClick={openModal}
+            className="px-6 py-3 text-base sm:text-lg font-bold rounded-full bg-black text-white border-2 border-black transition-all hover:bg-gray-800 cursor-pointer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            Talk to Us
+          </motion.button>
+        </div>
+      </motion.div>
+
       {/* Contact bar */}
-      <div className="mt-10 sm:mt-16 px-4 max-w-6xl mx-auto">
+      <div className="mt-12 sm:mt-16 px-4 max-w-6xl mx-auto">
         {/* Desktop version - horizontal with reversed order */}
         <motion.div
           className="hidden sm:flex items-center justify-between bg-white rounded-full w-full border-2 border-black px-5 py-4 md:h-16"
@@ -112,7 +146,6 @@ const Footer = () => {
           >
             CONTACT US NOW!
           </motion.a>
-          u
         </motion.div>
 
         {/* Mobile version - floating button */}
@@ -179,10 +212,10 @@ const Footer = () => {
               className="w-6 h-6 mr-2 flex items-center justify-center"
               whileHover={{ rotate: 360, transition: { duration: 0.5 } }}
             >
-              <Linkedin size={20} className="text-[#F3B07C]" />
+              <MapPin size={20} className="text-[#F3B07C]" />
             </motion.div>
             <span className="text-black font-medium text-sm sm:text-base">
-              Vega Edu
+              Orangewood Labs, A-48 Sector-67, Noida, UP
             </span>
           </motion.div>
 
@@ -287,13 +320,14 @@ const Footer = () => {
               },
             }}
           >
-            <Image
-              src="/vega-main.png"
-              alt="Vega Logo"
-              width={200}
-              height={80}
-              className="object-contain"
-            />
+            <div className="flex flex-col">
+              <span className="text-3xl sm:text-4xl font-bold tracking-tighter text-black">
+                Robo<span className="text-[#F3B07C]">Foundry</span>
+              </span>
+              <span className="text-xs sm:text-sm text-gray-600 mt-1">
+                Powered by Orangewood Labs · YC W18
+              </span>
+            </div>
           </motion.div>
 
           {/* Footer links */}

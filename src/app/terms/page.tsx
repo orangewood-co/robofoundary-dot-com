@@ -112,17 +112,17 @@ const TermsPage = () => {
       </h2>
       <div className="ml-8 border-l-2 border-gray-200 pl-6">
         <p className="text-gray-700 mb-2">
-          Permission is granted to temporarily download one copy of the materials (information or software) on Vegaskool’s web site for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:
+          Permission is granted to temporarily download one copy of the materials (information or software) on RoboFoundry’s web site for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:
         </p>
         <ul className="list-disc list-inside mt-2 space-y-2 text-gray-700">
           <li>Modify or copy the materials</li>
           <li>Use the materials for any commercial purpose, or for any public display (commercial or non-commercial)</li>
-          <li>Attempt to decompile or reverse engineer any software contained on Vegaskool’s web site</li>
+          <li>Attempt to decompile or reverse engineer any software contained on RoboFoundry’s web site</li>
           <li>Remove any copyright or other proprietary notations from the materials</li>
           <li>Transfer the materials to another person or “mirror” the materials on any other server</li>
         </ul>
         <p className="text-gray-700 mt-4">
-          This license shall automatically terminate if you violate any of these restrictions and may be terminated by Vegaskool at any time. Upon terminating your viewing of these materials or upon the termination of this license, you must destroy any downloaded materials in your possession whether in electronic or printed format.
+          This license shall automatically terminate if you violate any of these restrictions and may be terminated by RoboFoundry at any time. Upon terminating your viewing of these materials or upon the termination of this license, you must destroy any downloaded materials in your possession whether in electronic or printed format.
         </p>
       </div>
     </motion.div>
@@ -144,7 +144,7 @@ const TermsPage = () => {
       </h2>
       <div className="ml-8 border-l-2 border-gray-200 pl-6">
         <p className="text-gray-700">
-          The materials on Vegaskool’s web site are provided “as is”. Vegaskool makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties, including without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights. Further, Vegaskool does not warrant or make any representations concerning the accuracy, likely results, or reliability of the use of the materials on its Internet web site or otherwise relating to such materials or on any sites linked to this site.
+          The materials on RoboFoundry’s web site are provided “as is”. RoboFoundry makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties, including without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights. Further, RoboFoundry does not warrant or make any representations concerning the accuracy, likely results, or reliability of the use of the materials on its Internet web site or otherwise relating to such materials or on any sites linked to this site.
         </p>
       </div>
     </motion.div>
@@ -155,7 +155,7 @@ const TermsPage = () => {
       </h2>
       <div className="ml-8 border-l-2 border-gray-200 pl-6">
         <p className="text-gray-700">
-          In no event shall Vegaskool or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption,) arising out of the use or inability to use the materials on Vegaskool’s Internet site, even if Vegaskool or a Vegaskool authorized representative has been notified orally or in writing of the possibility of such damage. Because some jurisdictions do not allow limitations on implied warranties, or limitations of liability for consequential or incidental damages, these limitations may not apply to you.
+          In no event shall RoboFoundry or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption,) arising out of the use or inability to use the materials on RoboFoundry’s Internet site, even if RoboFoundry or a RoboFoundry authorized representative has been notified orally or in writing of the possibility of such damage. Because some jurisdictions do not allow limitations on implied warranties, or limitations of liability for consequential or incidental damages, these limitations may not apply to you.
         </p>
         <p className="text-gray-700 mt-4">
           Some jurisdictions do not allow the exclusion of implied warranties, so the above exclusion may not apply to you. Some jurisdictions do not allow limitations on how long an implied warranty lasts, so the above limitation may not apply to you. To the maximum extent permitted by law, notwithstanding anything to the contrary contained herein, our liability to you for any damages arising from or related to this agreement, will at all times be limited to a maximum of fifty U.S. dollars (u.s. $50). The existence of more than one claim will not enlarge this limit.
@@ -169,7 +169,7 @@ const TermsPage = () => {
       </h2>
       <div className="ml-8 border-l-2 border-gray-200 pl-6">
         <p className="text-gray-700">
-          The materials appearing on Vegaskool’s web site could include technical, typographical, or photographic errors. Vegaskool does not warrant that any of the materials on its web site are accurate, complete, or current. Vegaskool may make changes to the materials contained on its web site at any time without notice. Vegaskool does not, however, make any commitment to update the materials.
+          The materials appearing on RoboFoundry’s web site could include technical, typographical, or photographic errors. RoboFoundry does not warrant that any of the materials on its web site are accurate, complete, or current. RoboFoundry may make changes to the materials contained on its web site at any time without notice. RoboFoundry does not, however, make any commitment to update the materials.
         </p>
       </div>
     </motion.div>
@@ -180,7 +180,7 @@ const TermsPage = () => {
       </h2>
       <div className="ml-8 border-l-2 border-gray-200 pl-6">
         <p className="text-gray-700">
-          Vegaskool has not reviewed all of the sites linked to its Internet web site and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by Vegaskool of the site. Use of any such linked web site is at the user’s own risk.
+          RoboFoundry has not reviewed all of the sites linked to its Internet web site and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by RoboFoundry of the site. Use of any such linked web site is at the user’s own risk.
         </p>
       </div>
     </motion.div>
@@ -191,7 +191,7 @@ const TermsPage = () => {
       </h2>
       <div className="ml-8 border-l-2 border-gray-200 pl-6">
         <p className="text-gray-700">
-          Vegaskool may revise these terms of use for its web site at any time without notice. By using this web site you are agreeing to be bound by the then current version of these Terms and Conditions of Use.
+          RoboFoundry may revise these terms of use for its web site at any time without notice. By using this web site you are agreeing to be bound by the then current version of these Terms and Conditions of Use.
         </p>
       </div>
     </motion.div>
@@ -202,7 +202,7 @@ const TermsPage = () => {
       </h2>
       <div className="ml-8 border-l-2 border-gray-200 pl-6">
         <p className="text-gray-700">
-          Any claim relating to Vegaskool’s web site shall be governed by the laws of India without regard to its conflict of law provisions. General Terms and Conditions applicable to Use of a Web Site.
+          Any claim relating to RoboFoundry’s web site shall be governed by the laws of India without regard to its conflict of law provisions. General Terms and Conditions applicable to Use of a Web Site.
         </p>
       </div>
     </motion.div>
@@ -224,7 +224,7 @@ const TermsPage = () => {
       </h2>
       <div className="ml-8 border-l-2 border-gray-200 pl-6">
         <p className="text-gray-700">
-          Copyright ©. Vegaskool (Managed by AADHUNIK HEALTHCARE RESEARCH AND ADVISORY PRIVATE LIMITED) All rights reserved. All trademarks, logos and service marks displayed on the Site are our property or the property of other third-parties. You are not permitted to use these Marks without our prior written consent or the consent of such third party which may own the Marks.
+          Copyright ©. RoboFoundry (Managed by AADHUNIK HEALTHCARE RESEARCH AND ADVISORY PRIVATE LIMITED) All rights reserved. All trademarks, logos and service marks displayed on the Site are our property or the property of other third-parties. You are not permitted to use these Marks without our prior written consent or the consent of such third party which may own the Marks.
         </p>
       </div>
     </motion.div>

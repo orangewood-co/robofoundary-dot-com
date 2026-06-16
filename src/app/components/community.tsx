@@ -1,7 +1,7 @@
 "use client";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, MessageSquare, Users, Trophy, Target, Github } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useContactModal } from "@/app/hooks/use-contact-modal";
 import ContactModal from "./contact";
 import { motion, useInView, useAnimation } from "framer-motion";
@@ -9,29 +9,20 @@ import { motion, useInView, useAnimation } from "framer-motion";
 const Community = () => {
   const controls = useAnimation();
   const backgroundControls = useAnimation();
-  const countControlRef = useRef<HTMLHeadingElement>(null);
-  const countInView = useInView(countControlRef, { once: true, amount: 1 });
 
   const { isOpen, openModal, closeModal } = useContactModal();
 
-  // Use a more precise ref with higher threshold to control animations only when truly visible
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.25 });
 
-  // Counter animation state
-  const [count, setCount] = useState(0);
-  const targetCount = 3500;
-
   useEffect(() => {
     if (isInView) {
-      // Start main animations
       controls.start("visible");
       backgroundControls.start({
         opacity: 0.7,
         transition: { duration: 1.8 },
       });
 
-      // Add a cool floating effect to the background elements
       const floatInterval = setInterval(() => {
         backgroundControls.start({
           y: [0, -15, 0],
@@ -46,35 +37,8 @@ const Community = () => {
     }
   }, [isInView, controls, backgroundControls]);
 
-  // Counter animation - starts only when counter is in view
-  useEffect(() => {
-    if (countInView) {
-      const duration = 1500; // 1.5 seconds
-      const frameDuration = 1000 / 60; // 60fps
-      const totalFrames = Math.round(duration / frameDuration);
-      let frame = 0;
-
-      // Use nonlinear easing for more dramatic effect
-      const easeOutQuart = (x: number): number => 1 - Math.pow(1 - x, 4);
-
-      const counter = setInterval(() => {
-        frame++;
-        const progress = easeOutQuart(frame / totalFrames);
-        setCount(Math.floor(progress * targetCount));
-
-        if (frame === totalFrames) {
-          clearInterval(counter);
-        }
-      }, frameDuration);
-
-      return () => {
-        clearInterval(counter);
-      };
-    }
-  }, [countInView, targetCount]);
-
   const scrollToNextSection = () => {
-    const nextSection = document.getElementById("testimonials");
+    const nextSection = document.getElementById("footer");
 
     if (nextSection) {
       nextSection.scrollIntoView({
@@ -85,13 +49,38 @@ const Community = () => {
   };
 
   const features = [
-    { title: "Community Events", icon: "/star_1.png" },
-    { title: "Learning Resources", icon: "/color_star.png" },
-    { title: "Expert Mentoring", icon: "/star_1.png" },
-    { title: "Industry Connect", icon: "/color_star.png" },
+    {
+      title: "Discord",
+      icon: MessageSquare,
+      description:
+        "Our 24/7 home base. Ask questions, get code help, showcase projects, find teammates, and stay connected with mentors and alumni. Channels for ROS2, computer vision, hardware, and careers.",
+    },
+    {
+      title: "Meetups",
+      icon: Users,
+      description:
+        "In-person and hybrid meetups in Noida, Delhi NCR, and partner university cities. Live robot demos, lightning talks from working engineers, and genuine networking.",
+    },
+    {
+      title: "Hackathons",
+      icon: Trophy,
+      description:
+        "48-hour robotics hackathons with real hardware access, problem statements from industry, prize money, and direct visibility to hiring companies for the top teams.",
+    },
+    {
+      title: "Challenges",
+      icon: Target,
+      description:
+        "Monthly open-ended challenges: vision tasks, control problems, simulation puzzles, and creative builds. The best solutions get featured by our mentors.",
+    },
+    {
+      title: "Open Source",
+      icon: Github,
+      description:
+        "Contribute to community-maintained ROS2 packages, kinematics libraries, and Gazebo environments under the RoboFoundry GitHub organization. Maintainership for active contributors.",
+    },
   ];
 
-  // Enhanced animation variants
   const headingVariants = {
     hidden: { opacity: 0, x: -80 },
     visible: {
@@ -106,41 +95,12 @@ const Community = () => {
     },
   };
 
-  const countVariants = {
-    hidden: { opacity: 0, scale: 0.5, filter: "blur(5px)" },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      filter: "blur(0px)",
-      transition: {
-        duration: 0.8,
-        ease: [0.22, 1, 0.36, 1], // Custom cubic-bezier
-        delay: 0.3,
-      },
-    },
-  };
-
-  const ctaVariants = {
-    hidden: { opacity: 0, y: 50, scale: 0.9 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 15,
-        delay: 0.6,
-      },
-    },
-  };
-
   const cardContainerVariants = {
     hidden: {},
     visible: {
       transition: {
         staggerChildren: 0.15,
-        delayChildren: 0.7,
+        delayChildren: 0.4,
       },
     },
   };
@@ -154,20 +114,6 @@ const Community = () => {
       transition: {
         type: "spring",
         stiffness: 100,
-        damping: 10,
-      },
-    },
-  };
-
-  const imageVariants = {
-    hidden: { opacity: 0, rotate: -5, scale: 0.9 },
-    visible: {
-      opacity: 1,
-      rotate: 0,
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 70,
         damping: 10,
       },
     },
@@ -204,11 +150,6 @@ const Community = () => {
         ease: "easeOut",
       },
     },
-  };
-
-  // Format counter with commas
-  const formatNumber = (num: number) => {
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
   return (
@@ -275,46 +216,36 @@ const Community = () => {
         </motion.div>
 
         <div className="relative max-w-5xl mx-auto px-4 z-10">
-          {/* Heading Section with staggered animation */}
-          <div className="space-y-2 text-left overflow-hidden">
-            <motion.h1
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-black font-extrabold tracking-tighter"
+          {/* Heading Section */}
+          <div className="space-y-3 text-left overflow-hidden mb-8 sm:mb-10">
+            <motion.p
+              className="text-sm sm:text-base font-medium text-[#F3B07C]"
               initial="hidden"
               animate={controls}
               variants={headingVariants}
             >
-              Total leads generated,
+              Community
+            </motion.p>
+            <motion.h1
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-black font-extrabold tracking-tighter"
+              initial="hidden"
+              animate={controls}
+              variants={headingVariants}
+            >
+              More than a course
             </motion.h1>
-            <div className="flex flex-col items-start overflow-hidden">
-              <div className="flex flex-col sm:flex-row sm:items-center gap-0 sm:gap-2">
-                <motion.h2
-                  ref={countControlRef}
-                  className="text-5xl sm:text-6xl md:text-7xl lg:text-9xl font-bold text-black leading-none"
-                  initial="hidden"
-                  animate={controls}
-                  variants={countVariants}
-                >
-                  {formatNumber(count)}
-                </motion.h2>
-                <motion.p
-                  className="text-base sm:text-lg md:text-xl font-normal text-black sm:mt-12 md:mt-16"
-                  initial={{ opacity: 0 }}
-                  animate={controls}
-                  variants={{
-                    hidden: { opacity: 0, x: 20 },
-                    visible: {
-                      opacity: 1,
-                      x: 0,
-                      transition: { delay: 0.9, duration: 0.5 },
-                    },
-                  }}
-                >
-                  and counting...
-                </motion.p>
-              </div>
-            </div>
-            {/* Desktop version - horizontal pill with gradient animation */}
-            <div className="hidden sm:flex sm:flex-row border-2 border-black items-center rounded-full w-full max-w-5xl mx-auto overflow-hidden relative">
+            <motion.p
+              className="text-base sm:text-lg text-gray-700 max-w-2xl"
+              initial="hidden"
+              animate={controls}
+              variants={headingVariants}
+            >
+              RoboFoundry is a growing community of engineers, students, and
+              robotics enthusiasts building together.
+            </motion.p>
+
+            {/* Desktop CTA pill */}
+            <div className="hidden sm:flex sm:flex-row border-2 border-black items-center rounded-full w-full max-w-5xl mx-auto overflow-hidden relative mt-6">
               <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-[#F3B07C] via-[#F3B07C]/80 to-[#F3B07C]"
                 animate={
@@ -331,18 +262,14 @@ const Community = () => {
                 }}
               />
               <div className="sm:flex-1 px-6 py-3 text-left text-base md:text-lg font-medium text-black relative z-10">
-                Join Now to avail the perks of Vega Education community &gt;&gt;
+                Join the RoboFoundry community — free for all participants and
+                alumni &gt;&gt;
               </div>
               <motion.a
                 href="#contact"
                 onClick={(e) => {
                   e.preventDefault();
-                  const contactElement = document.getElementById("contact");
-                  if (contactElement) {
-                    contactElement.scrollIntoView({ behavior: "smooth" });
-                  } else {
-                    openModal();
-                  }
+                  openModal();
                 }}
                 className="relative z-10 m-2 px-6 py-2 text-lg font-bold rounded-full transition-all cursor-pointer
                 bg-black text-white hover:bg-gray-800 text-center"
@@ -356,8 +283,8 @@ const Community = () => {
               </motion.a>
             </div>
 
-            {/* Mobile version - enhanced glow effect */}
-            <div className="sm:hidden flex justify-center">
+            {/* Mobile CTA */}
+            <div className="sm:hidden flex justify-center mt-4">
               <div className="relative">
                 <motion.div
                   className="absolute inset-0 bg-[#F3B07C] blur-md rounded-xl"
@@ -379,12 +306,7 @@ const Community = () => {
                   href="#contact"
                   onClick={(e) => {
                     e.preventDefault();
-                    const contactElement = document.getElementById("contact");
-                    if (contactElement) {
-                      contactElement.scrollIntoView({ behavior: "smooth" });
-                    } else {
-                      openModal();
-                    }
+                    openModal();
                   }}
                   className="relative block px-8 py-3 text-base font-bold rounded-xl
                   bg-black text-white hover:bg-gray-800 text-center"
@@ -397,68 +319,45 @@ const Community = () => {
             </div>
           </div>
 
-          {/* Feature Cards with 3D hover effect */}
+          {/* Community Cards */}
           <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mt-8 sm:mt-10 md:mt-12"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
             initial="hidden"
             animate={controls}
             variants={cardContainerVariants}
           >
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                className="bg-[#F1F1F1] text-black p-3 sm:p-4 md:p-6 border-2 rounded-xl sm:rounded-2xl flex flex-col items-center transform-gpu"
-                variants={cardVariants}
-                whileHover={{
-                  y: -8,
-                  boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
-                  transition: { duration: 0.2 },
-                }}
-                style={{ perspective: "1000px" }}
-              >
-                <p className="mb-2 sm:mb-3 md:mb-4 text-xs sm:text-sm md:text-base font-medium">
-                  {feature.title}
-                </p>
+            {features.map((feature, index) => {
+              const Icon = feature.icon;
+              return (
                 <motion.div
-                  className="w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-40 lg:h-40 relative border-2 rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-7 bg-white"
-                  variants={imageVariants}
+                  key={index}
+                  className="bg-[#F1F1F1] text-black p-5 sm:p-6 border-2 border-black rounded-xl sm:rounded-2xl flex flex-col transform-gpu"
+                  variants={cardVariants}
                   whileHover={{
-                    rotateY: [0, 10, -10, 0],
-                    rotateX: [0, -10, 5, 0],
-                    transition: { duration: 1 },
+                    y: -8,
+                    boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
+                    transition: { duration: 0.2 },
                   }}
-                  style={{ transformStyle: "preserve-3d" }}
                 >
-                  <Image
-                    src={feature.icon}
-                    alt={feature.title}
-                    width={120}
-                    height={100}
-                    className="object-contain"
-                  />
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-tr from-transparent via-white to-white/20 rounded-xl sm:rounded-2xl"
-                    animate={
-                      isInView
-                        ? {
-                            opacity: [0, 0.05, 0.1, 0.05, 0],
-                          }
-                        : {}
-                    }
-                    transition={{
-                      repeat: Infinity,
-                      duration: 3,
-                      delay: index * 0.5,
-                    }}
-                  />
+                  <div className="flex items-center gap-4 mb-3">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 shrink-0 rounded-xl border-2 border-black bg-white flex items-center justify-center">
+                      <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-black" />
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-bold">
+                      {feature.title}
+                    </h3>
+                  </div>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    {feature.description}
+                  </p>
                 </motion.div>
-              </motion.div>
-            ))}
+              );
+            })}
           </motion.div>
 
-          {/* Down arrow with enhanced animation */}
+          {/* Down arrow */}
           <motion.div
-            className="flex justify-center mt-6 sm:mt-8 pb-6"
+            className="flex justify-center mt-8 sm:mt-10 pb-6"
             initial="hidden"
             animate={controls}
             variants={arrowVariants}
@@ -474,7 +373,7 @@ const Community = () => {
         </div>
       </div>
 
-      {/* Enhanced zigzag divider */}
+      {/* Zigzag divider */}
       <motion.div
         className="w-full h-auto bg-[#F0F0F0] flex items-center justify-center overflow-hidden"
         initial="hidden"

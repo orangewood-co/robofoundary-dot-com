@@ -31,7 +31,7 @@ const Testimonials = () => {
   }, [hasAnimated]);
 
   const scrollToNextSection = () => {
-    const nextSection = document.getElementById("offerings");
+    const nextSection = document.getElementById("community");
 
     if (nextSection) {
       nextSection.scrollIntoView({
@@ -45,16 +45,17 @@ const Testimonials = () => {
     {
       content:
         "The instructor was knowledgeable and approachable, answering questions effectively and providing relevant examples. It was helpful to have one-on-one support when working through more complex aspects of ROS and troubleshooting code.",
-      author: "Dr. Kumud Tiwari",
-    },
-    {
-      content: "VERY GOOD WORKSHOP",
-      author: "YOGESH KUMAR VERMA",
+      author: "Dr. Kumud Tiwari — Researcher · Program graduate",
     },
     {
       content:
-        "The practical exercises provided a solid understanding of how to apply ROS concepts in real-world scenarios. Learning by doing, such as creating nodes, publishing/subscribing to topics, and using roslaunch files, made complex ideas more tangible and easier to grasp.",
-      author: "Shresth Srivastava",
+        "Working on a real industry project with Orangewood's engineers changed how I think about my career. The internship certificate opened doors I didn't expect.",
+      author: "Rohan Gupta — B.Tech Final Year, IIT Delhi",
+    },
+    {
+      content:
+        "My daughter came back from the office visit completely lit up about robotics. The team handled everything — we just showed up and she got an incredible experience.",
+      author: "Parent of a Grade 10 student — High School Track",
     },
   ];
 
