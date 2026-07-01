@@ -1,7 +1,7 @@
 import Hero from "./components/hero";
 import WhatWeTeach from "./components/whatWeTeach";
 import LearningPath from "./components/learningPath";
-import WhyRobofoundry from "./components/whyRobofoundry";
+import WhyRobofoundary from "./components/whyRobofoundary";
 import FeaturedProjects from "./components/featuredProjects";
 import Partners from "./components/partners";
 import Offerings from "./components/offerings";
@@ -18,7 +18,7 @@ export default function Home() {
       <Hero />
       <WhatWeTeach />
       <LearningPath />
-      <WhyRobofoundry />
+      <WhyRobofoundary />
       <FeaturedProjects />
       <Partners />
       <Offerings />

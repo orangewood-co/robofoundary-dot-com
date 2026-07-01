@@ -322,7 +322,7 @@ const Footer = () => {
           >
             <div className="flex flex-col">
               <span className="text-3xl sm:text-4xl font-bold tracking-tighter text-black">
-                Robo<span className="text-[#F3B07C]">Foundry</span>
+                Robo<span className="text-[#F3B07C]">Foundary</span>
               </span>
               <span className="text-xs sm:text-sm text-gray-600 mt-1">
                 Powered by Orangewood Labs · YC W18

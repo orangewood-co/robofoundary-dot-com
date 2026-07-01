@@ -169,7 +169,7 @@ const Hero = () => {
           <div className="flex items-center">
             <Link href="/" className="cursor-pointer">
               <span className="text-lg sm:text-xl md:text-2xl font-bold tracking-tighter text-black">
-                Robo<span className="text-[#F3B07C]">Foundry</span>
+                Robo<span className="text-[#F3B07C]">Foundary</span>
               </span>
             </Link>
           </div>

@@ -9,21 +9,21 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://robofoundry.in"),
-  title: "RoboFoundry — Forging Future Roboticists",
+  metadataBase: new URL("https://robofoundary.in"),
+  title: "RoboFoundary — Forging Future Roboticists",
   description:
     "Learn Robotics, AI, ROS2, Computer Vision, and Autonomous Systems through real hardware, industry mentors, and hands-on projects — not just slides. Powered by Orangewood Labs (YC W18).",
   openGraph: {
-    title: "RoboFoundry — Forging Future Roboticists",
+    title: "RoboFoundary — Forging Future Roboticists",
     description:
       "Learn Robotics, AI, ROS2, Computer Vision, and Autonomous Systems through real hardware, industry mentors, and hands-on projects. Powered by Orangewood Labs (YC W18).",
-    url: "https://robofoundry.in",
-    siteName: "RoboFoundry",
+    url: "https://robofoundary.in",
+    siteName: "RoboFoundary",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "RoboFoundry — Forging Future Roboticists",
+    title: "RoboFoundary — Forging Future Roboticists",
     description:
       "Robotics, AI, and autonomous systems training with real hardware and industry mentors. Powered by Orangewood Labs (YC W18).",
   },

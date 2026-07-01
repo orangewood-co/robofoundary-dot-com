@@ -192,7 +192,7 @@ const OurEducators = () => {
           Our Mentors
         </h1>
         <p className="max-w-2xl mx-auto text-lg text-gray-700">
-          Meet the engineers behind RoboFoundry's programs — active builders from
+          Meet the engineers behind RoboFoundary's programs — active builders from
           Orangewood Labs, Volvo Cars, and AstroRobotics who do the exact job
           you're training for.
         </p>

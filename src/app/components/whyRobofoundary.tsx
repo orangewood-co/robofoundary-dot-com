@@ -3,7 +3,7 @@ import { ArrowDown } from "lucide-react";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
-const WhyRobofoundry = () => {
+const WhyRobofoundary = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.15 });
 
@@ -67,7 +67,7 @@ const WhyRobofoundry = () => {
           animate={isInView ? "visible" : "hidden"}
           variants={fadeInUp}
         >
-          Why RoboFoundry
+          Why RoboFoundary
         </motion.p>
         <motion.h1
           className="text-3xl sm:text-4xl md:text-5xl font-bold text-black tracking-tighter mb-4"
@@ -84,9 +84,8 @@ const WhyRobofoundry = () => {
           variants={fadeInUp}
         >
           We put real robots in your hands and active industry engineers at your
-          side. Here's what makes us different.
+          side. Here&apos;s what makes us different.
         </motion.p>
-
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"
           initial="hidden"
@@ -112,7 +111,6 @@ const WhyRobofoundry = () => {
             </motion.div>
           ))}
         </motion.div>
-
         <div className="flex justify-center mt-10 sm:mt-12">
           <button
             onClick={scrollToNextSection}
@@ -127,4 +125,4 @@ const WhyRobofoundry = () => {
   );
 };
 
-export default WhyRobofoundry;
+export default WhyRobofoundary;

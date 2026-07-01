@@ -77,7 +77,7 @@ const Community = () => {
       title: "Open Source",
       icon: Github,
       description:
-        "Contribute to community-maintained ROS2 packages, kinematics libraries, and Gazebo environments under the RoboFoundry GitHub organization. Maintainership for active contributors.",
+        "Contribute to community-maintained ROS2 packages, kinematics libraries, and Gazebo environments under the RoboFoundary GitHub organization. Maintainership for active contributors.",
     },
   ];
 
@@ -240,7 +240,7 @@ const Community = () => {
               animate={controls}
               variants={headingVariants}
             >
-              RoboFoundry is a growing community of engineers, students, and
+              RoboFoundary is a growing community of engineers, students, and
               robotics enthusiasts building together.
             </motion.p>
 
@@ -262,7 +262,7 @@ const Community = () => {
                 }}
               />
               <div className="sm:flex-1 px-6 py-3 text-left text-base md:text-lg font-medium text-black relative z-10">
-                Join the RoboFoundry community — free for all participants and
+                Join the RoboFoundary community — free for all participants and
                 alumni &gt;&gt;
               </div>
               <motion.a
