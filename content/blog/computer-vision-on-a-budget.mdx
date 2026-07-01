@@ -1,0 +1,27 @@
+---
+title: "Computer Vision on a Budget: What a Webcam Can Really Do"
+excerpt: "You don't need a depth camera to build something impressive. Here's how far a plain USB webcam and OpenCV can take a beginner project."
+category: "Computer Vision"
+author: "Pushkar Shinde"
+authorInitials: "PS"
+date: "2026-04-28"
+readTime: "6 min read"
+---
+
+Every robotics beginner wants to do computer vision, and almost every beginner assumes they need expensive hardware. They don't. A twelve-dollar webcam, OpenCV, and a laptop can get you surprisingly far.
+
+## Start with color, not deep learning
+
+Object detection with neural networks is exciting, but color thresholding in HSV space is a better first project. It is fast, it runs on any machine, and it teaches you how images are actually represented in memory.
+
+- Convert frames from BGR to HSV for stable color detection.
+- Use contour detection to find and track colored objects.
+- Draw bounding boxes to visualize what the robot "sees".
+
+## When to graduate to models
+
+Once you hit the limits of classical methods — cluttered backgrounds, varied lighting, many object classes — that is the right time to reach for a pretrained model. Not before. Understanding the fundamentals first makes the deep learning far less mysterious.
+
+<Callout>
+The best vision engineers we know can debug a pipeline by looking at the intermediate frames, not just the final output. Always visualize each stage.
+</Callout>

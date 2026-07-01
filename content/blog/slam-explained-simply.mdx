@@ -1,0 +1,27 @@
+---
+title: "SLAM Explained Simply: How Robots Build Maps"
+excerpt: "Simultaneous Localization and Mapping sounds intimidating. At its core it's a robot answering two questions at once — and we break it down."
+category: "Autonomy"
+author: "Yuvraj Mehta"
+authorInitials: "YM"
+date: "2026-03-22"
+readTime: "8 min read"
+---
+
+SLAM is the technology that lets a robot enter an unknown room and come out with a map — while also knowing where it is on that map. It powers everything from robot vacuums to self-driving cars.
+
+## Two questions, one loop
+
+The "simultaneous" in SLAM is the whole trick. A robot needs a map to know where it is, but it needs to know where it is to build a map. SLAM solves both at once, refining each estimate against the other as new sensor data arrives.
+
+- Localization: where am I relative to what I've seen?
+- Mapping: what does the environment look like?
+- Loop closure: recognizing a place you've been before to correct drift.
+
+## Getting hands-on
+
+The best way to understand SLAM is to run it. With ROS2 and a lidar (or even a depth camera), you can watch a map assemble itself in real time as you drive a robot around a room. It stops being abstract the moment you see the walls appear.
+
+<Callout>
+Drift is the enemy. Every SLAM system is, in some sense, an elaborate strategy for fighting the accumulation of small errors.
+</Callout>

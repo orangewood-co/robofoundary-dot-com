@@ -1,0 +1,33 @@
+---
+title: "Getting Started with ROS2: A Roboticist's First Week"
+excerpt: "Everything we wish someone had told us before writing our first ROS2 node — from workspaces to your first publisher-subscriber pair."
+category: "ROS2"
+author: "Yuvraj Mehta"
+authorInitials: "YM"
+date: "2026-05-12"
+readTime: "7 min read"
+---
+
+ROS2 can feel overwhelming on day one. There are workspaces, packages, nodes, topics, services, and a build system that behaves nothing like the Python scripts most students start with. But once the mental model clicks, it becomes the most productive way to build robots.
+
+In this guide we walk through the exact path we use to onboard every new engineer at RoboFoundary — the same path our summer students follow before they touch real hardware.
+
+## Set up your workspace
+
+A ROS2 workspace is just a folder with a specific structure. Create it, drop your packages inside the `src` directory, and let colcon handle the build. Keeping one workspace per project keeps dependencies clean and your sanity intact.
+
+- Install ROS2 Humble (LTS) — it is the version we standardize on.
+- Create a workspace and a `src` folder inside it.
+- Source the setup file in every new terminal, or add it to your shell profile.
+
+## Your first publisher and subscriber
+
+The classic first program is a talker and a listener. One node publishes a string on a topic; another subscribes and prints it. It is trivial, but it teaches the single most important concept in ROS2: nodes never talk to each other directly, they talk through topics.
+
+<Callout>
+Rule of thumb: if two parts of your robot need to share data, ask whether it should be a topic (streaming), a service (request/response), or an action (long-running goal).
+</Callout>
+
+## Where to go next
+
+Once talker/listener works, rebuild it with custom message types, then add a parameter, then a launch file. By the end of the week you will have the vocabulary to read almost any ROS2 codebase — including the ones running on the arms in our lab.
