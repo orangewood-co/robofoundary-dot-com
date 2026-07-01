@@ -49,12 +49,10 @@ const Hero = () => {
     }
   };
 
-  const navLinks = [
-    { name: "Home", href: "#top" },
-    { name: "What We Teach", href: "#teach" },
-    { name: "Programs", href: "#offerings" },
-    { name: "Mentors", href: "#mentors" },
-    { name: "Community", href: "#community" },
+  const pageLinks = [
+    { name: "Home", href: "/" },
+    { name: "Blog", href: "/blog" },
+    { name: "Kits", href: "/kits" },
   ];
 
   const handleNavClick = (
@@ -189,24 +187,25 @@ const Hero = () => {
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center space-x-4 lg:space-x-6">
-            {navLinks.map((link, index) => {
-              const targetId = link.href.replace("#", "");
-
-              return (
-                <motion.a
-                  key={link.name}
+            {pageLinks.map((link, index) => (
+              <motion.div
+                key={link.name}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.3,
+                  delay: 0.8 + index * 0.1,
+                }}
+              >
+                <Link
                   href={link.href}
-                  onClick={(e) => handleNavClick(e, targetId)}
                   className="px-2 md:px-3 py-1.5 md:py-2 text-base md:text-lg font-medium rounded-md transition-colors cursor-pointer
                   text-gray-700 hover:text-gray-900 hover:bg-gray-100"
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.8 + index * 0.1 }}
                 >
                   {link.name}
-                </motion.a>
-              );
-            })}
+                </Link>
+              </motion.div>
+            ))}
 
             {/* Special styling for Contact button */}
             <motion.a
@@ -237,21 +236,17 @@ const Hero = () => {
             </button>
           </div>
           <nav className="flex flex-col items-center space-y-4 p-4">
-            {navLinks.map((link) => {
-              const targetId = link.href.replace("#", "");
-
-              return (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, targetId)}
-                  className="px-4 py-2 text-xl font-medium w-full text-center rounded-md transition-colors
-                  text-gray-700 hover:text-gray-900 hover:bg-gray-100"
-                >
-                  {link.name}
-                </a>
-              );
-            })}
+            {pageLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-4 py-2 text-xl font-medium w-full text-center rounded-md transition-colors
+                text-gray-700 hover:text-gray-900 hover:bg-gray-100"
+              >
+                {link.name}
+              </Link>
+            ))}
             <a
               href="#contact"
               onClick={(e) => handleNavClick(e, "contact")}

@@ -335,29 +335,31 @@ const Footer = () => {
             className="md:col-span-4 flex flex-col items-center sm:items-start"
             variants={staggerContainer}
           >
-            {/* <div className="space-y-3 sm:space-y-4">
-              <motion.p 
-                className="text-black text-base sm:text-lg"
+            <p className="font-medium mb-3 sm:mb-4 text-black">Explore:</p>
+            <div className="flex flex-col space-y-3">
+              <motion.div
                 variants={fadeIn}
                 whileHover={{ x: 5, transition: { duration: 0.2 } }}
               >
-                Lorem Ipsum
-              </motion.p>
-              <motion.p 
-                className="text-black text-base sm:text-lg"
+                <Link
+                  href="/blog"
+                  className="text-black text-base sm:text-lg hover:text-[#F3B07C] transition-colors"
+                >
+                  Blog
+                </Link>
+              </motion.div>
+              <motion.div
                 variants={fadeIn}
                 whileHover={{ x: 5, transition: { duration: 0.2 } }}
               >
-                Lorem Ipsum
-              </motion.p>
-              <motion.p 
-                className="text-black text-base sm:text-lg"
-                variants={fadeIn}
-                whileHover={{ x: 5, transition: { duration: 0.2 } }}
-              >
-                Lorem Ipsum
-              </motion.p>
-            </div> */}
+                <Link
+                  href="/kits"
+                  className="text-black text-base sm:text-lg hover:text-[#F3B07C] transition-colors"
+                >
+                  Kits
+                </Link>
+              </motion.div>
+            </div>
           </motion.div>
 
           {/* Social links */}
