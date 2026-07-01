@@ -1,8 +1,8 @@
-# Vega — Website
+# RoboFoundary — Website
 
-Vega is a small Next.js site that showcases the Vega Education brand, community, and offerings. It uses the App Router, Tailwind for styling, Framer Motion for micro-interactions, and a small client-side contact modal powered by Formspree.
+Marketing site for [RoboFoundary](https://robofoundary.in) — robotics, AI, and autonomous systems training with real hardware and industry mentors. Powered by Orangewood Labs (YC W18).
 
-This repository contains the production website and a set of reusable UI components: hero, navbar, community section, offerings, footer and a contact modal.
+Built with Next.js (App Router), Tailwind CSS, Framer Motion, and a Formspree-powered contact modal.
 
 ## Quick start
 
@@ -20,11 +20,20 @@ Note: the project uses pnpm in the lockfile, but npm or yarn will also work if y
 ## What you'll find here
 
 - `src/app` — top-level routes and layout
-- `src/app/components` — UI components (Hero, Community, ContactModal, Footer, etc.)
-- `src/app/hooks` — small client hooks (contact modal state)
+- `src/app/components` — UI components (Hero, Community, Offerings, Footer, etc.)
+- `src/app/hooks` — client hooks (contact modal state)
 - `public/` — images and static assets
 
-Key libraries:
+### Routes
+
+- `/` — home page
+- `/our-educators` — educator profiles
+- `/kits` — robotics kits
+- `/blog` — blog listing and posts
+- `/privacy-policy` — privacy policy
+- `/terms` — terms of use
+
+### Key libraries
 
 - Next.js (App Router)
 - Tailwind CSS
@@ -64,7 +73,3 @@ Small, focused PRs are welcome. Follow these rules:
 ## License
 
 This project does not include a license file. Add one (for example an MIT license) if you plan to make the code public.
-
----
-
-If you'd like, I can add a short developer checklist or a small troubleshooting script to automate common checks (lint, build). Tell me which you'd prefer.
