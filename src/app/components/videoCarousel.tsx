@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence, PanInfo } from "framer-motion";
+import { motion, AnimatePresence, PanInfo, type Variants } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // Add animation variants
@@ -17,7 +17,7 @@ const imageContainerVariants = {
       delay: 0.3
     }
   }
-};
+} satisfies Variants;
 
 // Video carousel animation variants
 const videoCarouselVariants = {
@@ -41,7 +41,7 @@ const videoCarouselVariants = {
       opacity: { duration: 0.2 }
     }
   })
-};
+} satisfies Variants;
 
 // Replace the image container section with this video carousel
 const HeroVideoCarousel = () => {

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { useContactModal } from "@/app/hooks/use-contact-modal";
 import ContactModal from "./contact";
-import { motion, useInView, useAnimation } from "framer-motion";
+import { motion, useInView, useAnimation, type Variants } from "framer-motion";
 
 const Community = () => {
   const controls = useAnimation();
@@ -93,7 +93,7 @@ const Community = () => {
         duration: 0.8,
       },
     },
-  };
+  } satisfies Variants;
 
   const cardContainerVariants = {
     hidden: {},
@@ -103,7 +103,7 @@ const Community = () => {
         delayChildren: 0.4,
       },
     },
-  };
+  } satisfies Variants;
 
   const cardVariants = {
     hidden: { opacity: 0, y: 50, scale: 0.9 },
@@ -117,7 +117,7 @@ const Community = () => {
         damping: 10,
       },
     },
-  };
+  } satisfies Variants;
 
   const arrowVariants = {
     hidden: { opacity: 0, y: -20 },
@@ -137,7 +137,7 @@ const Community = () => {
         },
       },
     },
-  };
+  } satisfies Variants;
 
   const zigzagVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -150,7 +150,7 @@ const Community = () => {
         ease: "easeOut",
       },
     },
-  };
+  } satisfies Variants;
 
   return (
     <div className="bg-amber-50">

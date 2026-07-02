@@ -1,7 +1,7 @@
 "use client";
 import { ArrowDown, Check } from "lucide-react";
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, type Variants } from "framer-motion";
 import { useContactModal } from "@/app/hooks/use-contact-modal";
 import ContactModal from "./contact";
 
@@ -31,7 +31,7 @@ const Offerings = () => {
         ease: "easeOut",
       },
     },
-  };
+  } satisfies Variants;
 
   const staggerContainer = {
     hidden: { opacity: 0 },
@@ -42,7 +42,7 @@ const Offerings = () => {
         delayChildren: 0.2,
       },
     },
-  };
+  } satisfies Variants;
 
   const headingReveal = {
     hidden: { opacity: 0, x: -50 },
@@ -54,7 +54,7 @@ const Offerings = () => {
         ease: "easeOut",
       },
     },
-  };
+  } satisfies Variants;
 
   const institutional = [
     {

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence, PanInfo } from "framer-motion";
+import { motion, AnimatePresence, PanInfo, type Variants } from "framer-motion";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { StaticImageData } from "next/image";
@@ -50,7 +50,7 @@ const ImageCarousel = ({ images }: ImageCarouselProps) => {
         opacity: { duration: 0.7, ease: "easeInOut" },
       },
     }),
-  };
+  } satisfies Variants;
 
   // Dot indicator animation variants
   const dotVariants = {
@@ -62,7 +62,7 @@ const ImageCarousel = ({ images }: ImageCarouselProps) => {
         times: [0, 0.6, 1],
       },
     },
-  };
+  } satisfies Variants;
 
   // Check if we're on a mobile device
   useEffect(() => {

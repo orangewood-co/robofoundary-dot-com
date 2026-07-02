@@ -3,7 +3,7 @@ import React, { useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Footer from '../components/footer';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, type Variants } from 'framer-motion';
 import { ArrowLeft } from 'lucide-react';
 
 const TermsPage = () => {
@@ -21,7 +21,7 @@ const TermsPage = () => {
                 ease: "easeOut"
             }
         }
-    };
+    } satisfies Variants;
     
     const staggerContainer = {
         hidden: { opacity: 0 },
@@ -32,7 +32,7 @@ const TermsPage = () => {
                 delayChildren: 0.1
             }
         }
-    };
+    } satisfies Variants;
     
     return (
         <div className="bg-[#F1F1F1] min-h-screen">

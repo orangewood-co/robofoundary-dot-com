@@ -1,7 +1,7 @@
 "use client";
 import { ArrowDown, Cpu, Brain, Eye, Navigation } from "lucide-react";
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, type Variants } from "framer-motion";
 
 const WhatWeTeach = () => {
   const sectionRef = useRef(null);
@@ -16,7 +16,7 @@ const WhatWeTeach = () => {
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-  };
+  } satisfies Variants;
 
   const stagger = {
     hidden: { opacity: 0 },
@@ -24,7 +24,7 @@ const WhatWeTeach = () => {
       opacity: 1,
       transition: { staggerChildren: 0.15, delayChildren: 0.2 },
     },
-  };
+  } satisfies Variants;
 
   const pillars = [
     {

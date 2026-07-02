@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useForm, ValidationError } from "@formspree/react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { X, Send, CheckCircle, AlertTriangle } from "lucide-react";
 
 interface ContactModalProps {
@@ -66,7 +66,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
       opacity: 1,
       transition: { duration: 0.3 },
     },
-  };
+  } satisfies Variants;
 
   const modalVariants = {
     hidden: {
@@ -88,7 +88,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
       opacity: 0,
       transition: { duration: 0.2 },
     },
-  };
+  } satisfies Variants;
 
   const successVariants = {
     hidden: { scale: 0.8, opacity: 0 },
@@ -101,7 +101,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
         damping: 30,
       },
     },
-  };
+  } satisfies Variants;
 
   return (
     <AnimatePresence>
