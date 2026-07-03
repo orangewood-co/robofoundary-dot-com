@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowDown, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { useContactModal } from "@/app/hooks/use-contact-modal";
 import ContactModal from "./contact";
 import HeroVideoCarousel from "./videoCarousel";
@@ -82,7 +82,7 @@ const Hero = () => {
         ease: "easeOut",
       },
     },
-  };
+  } satisfies Variants;
 
   const headingVariants = {
     hidden: { y: 40, opacity: 0 },
@@ -95,7 +95,7 @@ const Hero = () => {
         ease: "easeOut",
       },
     },
-  };
+  } satisfies Variants;
 
   const textVariants = {
     hidden: { y: 30, opacity: 0 },
@@ -108,7 +108,7 @@ const Hero = () => {
         ease: "easeOut",
       },
     },
-  };
+  } satisfies Variants;
 
   const buttonVariants = {
     hidden: { scale: 0.8, opacity: 0 },
@@ -122,7 +122,7 @@ const Hero = () => {
         stiffness: 200,
       },
     },
-  };
+  } satisfies Variants;
 
   const imageContainerVariants = {
     hidden: { y: 60, opacity: 0 },
@@ -135,7 +135,7 @@ const Hero = () => {
         ease: "easeOut",
       },
     },
-  };
+  } satisfies Variants;
 
   const arrowVariants = {
     hidden: { y: -20, opacity: 0 },
@@ -151,7 +151,7 @@ const Hero = () => {
         repeatDelay: 1.5,
       },
     },
-  };
+  } satisfies Variants;
 
   return (
     <div id="top" className="bg-white text-black overflow-x-hidden">

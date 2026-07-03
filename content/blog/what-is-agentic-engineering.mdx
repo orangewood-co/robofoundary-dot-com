@@ -1,0 +1,77 @@
+---
+title: "What Is Agentic Engineering?"
+excerpt: "Vibe coding raises the floor. Agentic engineering raises the ceiling. Here is what the distinction means for serious software builders."
+category: "AI Engineering"
+author: "Aditya Bhatia"
+authorInitials: "AB"
+date: "2026-07-02"
+readTime: "6 min read"
+---
+
+![What Is Agentic Engineering?](/blog/agentic-engineering.jpg)
+
+For most of software's history, the question that separated good engineers was how well they wrote code.
+
+A different question is starting to matter more. How well can you direct?
+
+That shift has a name now. Agentic engineering. And if you build anything with software, it is worth understanding what it actually means, because most people are still using the word loosely.
+
+The term comes from Andrej Karpathy. In early 2025 he coined "vibe coding" to describe building software by telling a model what you want and accepting whatever comes back. A year later, in February 2026, he proposed a sharper name for the serious version of this work: agentic engineering.
+
+He drew a clean line between the two. Vibe coding raises the floor. Agentic engineering raises the ceiling.
+
+That one sentence carries more than it looks.
+
+Vibe coding is about access. Anyone can now describe an idea in plain language and get working software back. Someone who has never seen a call stack can ship something real. That matters, and it is not going away.
+
+Agentic engineering is about responsibility. You are still accountable for whether the software is correct, secure, and maintainable. The bar that professional software always had to clear does not move. What changes is how you clear it.
+
+So here is a working definition.
+
+<Callout>
+Agentic engineering is the practice of coordinating fallible, capable AI agents to build software, while you stay accountable for the spec, the quality, and the judgment.
+</Callout>
+
+Read that slowly, because each part is load bearing.
+
+The agents are fallible. They are stochastic. They are powerful in uneven ways, brilliant on one task and confidently wrong on the next. You are not commanding a machine that does exactly what it is told. You are directing something closer to a very fast, very well read, slightly unpredictable collaborator.
+
+Karpathy broke the term into its two halves, and the split is useful.
+
+"Agentic," because you are no longer writing the code by hand most of the time. You orchestrate agents who write it, and you sit in the oversight seat.
+
+"Engineering," because there is real skill in doing this well. It is not a vibe. There is craft here, and you can get measurably better at it.
+
+None of this would matter if the agents were not good enough yet.
+
+Something changed in late 2025. Karpathy points to December as the moment the ratio flipped for him. He went from writing most of his own code to delegating most of it, and found he had stopped correcting the output. The tools crossed a line from helpful to trustworthy across a wide range of tasks.
+
+If your mental model of AI coding is from 2024, it is out of date. That is the single most important thing to absorb. The category changed, not just the quality.
+
+Here is the part that took me a while to see clearly.
+
+When you write code by hand, your output is the code. When you do agentic engineering, your output is behavior. You are shaping how a system decides, acts, checks its own work, and recovers when it gets something wrong.
+
+The agent handles the action. What stays with you is everything around the action: the intent behind the task, the sense of whether the result is actually right, and the taste to tell good from almost-good.
+
+Those were always the hard parts of engineering. They are just no longer hidden inside the act of typing.
+
+This is why agentic engineering is a discipline you can practice, not a trick you either have or you do not. A few of the skills that matter most:
+
+- Writing a clear spec before you prompt anything. If you cannot describe what you want precisely, the agent has no chance of getting it right.
+- Reading a diff for architecture, not only for correctness. The code can run and still be wrong in shape.
+- Building evals and feedback loops, so the system has a verifiable signal for whether it succeeded, instead of relying on your gut every time.
+- Owning security and quality. A fast wrong answer shipped to production is worse than a slow right one.
+- And underneath all of it, taste. The judgment to tell a good solution from a merely plausible one.
+
+It is worth saying clearly what this is not.
+
+It is not "AI does the work, so skill stops mattering." The opposite is true. When the floor rises, the ceiling rises faster, and the gap between an average builder and a great one gets wider, not narrower.
+
+People used to talk about the 10x engineer. The ones who are good at this will clear that by a lot. Not because they type less. Because they understand more.
+
+The job did not disappear. It moved up the stack.
+
+For almost all of computing's history, to build software you first had to be able to write it. That is no longer the binding constraint.
+
+The question for the next decade is quieter, and harder. Not can you code. Can you direct?

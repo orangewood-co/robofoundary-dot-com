@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft, Check } from "lucide-react";
 import { useContactModal } from "@/app/hooks/use-contact-modal";
@@ -124,7 +124,7 @@ const Kits = () => {
         delayChildren: 0.3,
       },
     },
-  };
+  } satisfies Variants;
 
   const headerVariants = {
     hidden: { y: -50, opacity: 0 },
@@ -136,7 +136,7 @@ const Kits = () => {
         ease: "easeOut",
       },
     },
-  };
+  } satisfies Variants;
 
   const cardVariants = {
     hidden: { y: 50, opacity: 0 },
@@ -148,7 +148,7 @@ const Kits = () => {
         ease: "easeOut",
       },
     },
-  };
+  } satisfies Variants;
 
   return (
     <motion.div

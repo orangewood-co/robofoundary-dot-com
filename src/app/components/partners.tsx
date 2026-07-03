@@ -1,6 +1,6 @@
 "use client";
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, type Variants } from "framer-motion";
 
 const Partners = () => {
   const sectionRef = useRef(null);
@@ -9,7 +9,7 @@ const Partners = () => {
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-  };
+  } satisfies Variants;
 
   const stagger = {
     hidden: { opacity: 0 },
@@ -17,7 +17,7 @@ const Partners = () => {
       opacity: 1,
       transition: { staggerChildren: 0.08, delayChildren: 0.2 },
     },
-  };
+  } satisfies Variants;
 
   const partners = [
     "IIT Jammu",

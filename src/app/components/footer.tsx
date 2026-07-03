@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, type Variants } from "framer-motion";
 import ContactModal from "./contact";
 import { useContactModal } from "../hooks/use-contact-modal";
 
@@ -22,9 +22,9 @@ const Footer = () => {
         ease: "easeOut",
       },
     },
-  };
+  } satisfies Variants;
 
-  const fadeInDelay = (delay: number) => ({
+  const fadeInDelay = (delay: number): Variants => ({
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
@@ -46,7 +46,7 @@ const Footer = () => {
         delayChildren: 0.3,
       },
     },
-  };
+  } satisfies Variants;
 
   const scaleIn = {
     hidden: { opacity: 0, scale: 0.9 },
@@ -59,7 +59,7 @@ const Footer = () => {
         damping: 15,
       },
     },
-  };
+  } satisfies Variants;
 
   const starAnimation = {
     hidden: { opacity: 0, scale: 0.5 },
@@ -71,7 +71,7 @@ const Footer = () => {
         ease: "easeOut",
       },
     },
-  };
+  } satisfies Variants;
 
   return (
     <motion.footer

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
 import type { BlogPostMeta } from "@/lib/blog";
@@ -13,7 +13,7 @@ const BlogList = ({ posts }: { posts: BlogPostMeta[] }) => {
     setIsLoaded(true);
   }, []);
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -24,7 +24,7 @@ const BlogList = ({ posts }: { posts: BlogPostMeta[] }) => {
     },
   };
 
-  const headerVariants = {
+  const headerVariants: Variants = {
     hidden: { y: -50, opacity: 0 },
     visible: {
       y: 0,
@@ -36,7 +36,7 @@ const BlogList = ({ posts }: { posts: BlogPostMeta[] }) => {
     },
   };
 
-  const cardVariants = {
+  const cardVariants: Variants = {
     hidden: { y: 50, opacity: 0 },
     visible: {
       y: 0,

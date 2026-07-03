@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft, Linkedin, Twitter, Github, Instagram } from "lucide-react";
 
@@ -120,7 +120,7 @@ const OurEducators = () => {
         delayChildren: 0.3,
       },
     },
-  };
+  } satisfies Variants;
 
   const headerVariants = {
     hidden: { y: -50, opacity: 0 },
@@ -132,7 +132,7 @@ const OurEducators = () => {
         ease: "easeOut",
       },
     },
-  };
+  } satisfies Variants;
 
   const educatorCardVariants = {
     hidden: { y: 50, opacity: 0 },
@@ -152,7 +152,7 @@ const OurEducators = () => {
         duration: 0.3,
       },
     },
-  };
+  } satisfies Variants;
 
   const expertiseTagVariants = {
     hidden: { scale: 0.8, opacity: 0 },
@@ -163,7 +163,7 @@ const OurEducators = () => {
         duration: 0.3,
       },
     },
-  };
+  } satisfies Variants;
 
   return (
     <motion.div
