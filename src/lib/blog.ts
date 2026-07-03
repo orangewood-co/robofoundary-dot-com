@@ -12,6 +12,7 @@ export interface BlogFrontmatter {
   authorInitials: string;
   date: string;
   readTime: string;
+  thumbnail?: string;
 }
 
 export interface BlogPostMeta extends BlogFrontmatter {

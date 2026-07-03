@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, type Variants } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
 import type { BlogPostMeta } from "@/lib/blog";
 
@@ -103,11 +104,21 @@ const BlogList = ({ posts }: { posts: BlogPostMeta[] }) => {
               className="flex flex-col h-full border-2 border-black rounded-lg overflow-hidden bg-[#F1F1F1] cursor-pointer"
             >
               {/* Cover */}
-              <div className="relative h-44 w-full border-b-2 border-black bg-[#F3B07C] flex items-center justify-center">
-                <span className="text-5xl font-bold text-black">
-                  {post.authorInitials}
-                </span>
-                <span className="absolute top-3 left-3 text-xs font-bold px-3 py-1 rounded-full bg-white text-black border-2 border-black">
+              <div className="relative h-44 w-full border-b-2 border-black bg-[#F3B07C] flex items-center justify-center overflow-hidden">
+                {post.thumbnail ? (
+                  <Image
+                    src={post.thumbnail}
+                    alt={post.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                ) : (
+                  <span className="text-5xl font-bold text-black">
+                    {post.authorInitials}
+                  </span>
+                )}
+                <span className="absolute top-3 left-3 z-10 text-xs font-bold px-3 py-1 rounded-full bg-white text-black border-2 border-black">
                   {post.category}
                 </span>
               </div>
