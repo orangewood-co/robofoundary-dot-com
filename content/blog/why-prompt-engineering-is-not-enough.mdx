@@ -1,0 +1,63 @@
+---
+title: "Why Prompt Engineering Is Not Enough"
+excerpt: "The perfect prompt was a useful illusion. Reliable AI products need systems: context, memory, tools, control flow, evaluation, and recovery."
+category: "AI Engineering"
+author: "Aditya Bhatia"
+authorInitials: "AB"
+date: "2026-07-06"
+readTime: "5 min read"
+---
+
+![Why Prompt Engineering Is Not Enough](/blog/why-prompt-engineering-is-not-enough.jpg)
+
+For a while, the dream was the perfect prompt.
+
+Find the right words, in the right order, with the right examples, and the model would do what you wanted. People collected prompts like recipes. There were courses, marketplaces, job titles. For simple tasks it worked, and that was the trap.
+
+Because the moment you try to build something real, the perfect prompt stops being enough. Not because your wording is bad. Because a prompt is the wrong unit of work.
+
+Let me explain what I mean.
+
+A prompt is a single string of text at a single moment. That is all it is. It has no memory of what happened before. It cannot go and fetch a document it does not already contain. It cannot call a tool, check its own answer, or recover when something upstream breaks. One shot, one input, one output.
+
+That is fine for a one-off question. It falls apart the instant your task has more than one step, more than one source of truth, or any need to remember.
+
+This is the wall almost everyone hits. You write a prompt that works beautifully in a demo. Then you put it in front of real inputs and watch it forget context, misuse a tool, or confidently make something up. The instinct is to go back and fix the wording. Add another instruction. Another example. Another "please do not hallucinate."
+
+It rarely holds. You are trying to phrase your way out of a structural problem.
+
+The field figured this out around the middle of 2025. The conversation moved from prompt engineering to context engineering, a shift that people like Andrej Karpathy and teams at Anthropic helped name. The question changed. It went from "how do I phrase this instruction" to "what information does the model actually need to see at this step, and how do I get it there."
+
+That is a real upgrade, and it is worth internalizing. The work is no longer writing one clever instruction. It is curating the whole set of tokens the model sees: the system rules, the retrieved documents, the memory, the tool outputs, the running history. You are managing a limited attention budget, and your job is to spend it well.
+
+Here is the part that makes the shift non-negotiable.
+
+In 2025, researchers tested how models actually use long context. The finding was uncomfortable. Performance does not stay flat as you add more context. It degrades, often well before the window is full, and sometimes on tasks as simple as repeating a sequence back. On at least one large model, correctness started falling apart around 30,000 tokens.
+
+Sit with what that means. A bigger context window does not save you. The model does not read everything you give it with equal care. So stuffing more text into the prompt is not just inefficient, past a point it actively makes things worse.
+
+You cannot write a better sentence to fix that. You have to design around it. Retrieve only what matters. Summarize and compress as you go. Load information when it is needed instead of all at once. Those are not phrasing decisions. They are architecture decisions.
+
+And that is the real shift. Not from prompts to context. From prompts to systems.
+
+Because context engineering is still one layer. Underneath any reliable AI product is a system, and the prompt is just one component in it, sitting alongside memory, retrieval, tools, control flow, evaluation, and feedback loops. The reliability you are chasing is not a property of the prompt. It is a property of the structure the prompt lives inside.
+
+If that sounds familiar, it should. It is one of the oldest ideas in software.
+
+In 1972, David Parnas wrote a short paper on how to break a system into modules. His argument was that you do not decompose a system by its steps. You decompose it by hiding the decisions most likely to change behind clean boundaries, so a problem in one place does not leak into every other place. Good systems are not the ones with the cleverest parts. They are the ones where failure stays contained and state is explicit.
+
+That is exactly the discipline AI work is rediscovering. The model is the part most likely to surprise you. So you wrap it. You make state explicit instead of hoping it survives inside a prompt. You define what each piece is allowed to do. You give the system a way to check itself and recover when it is wrong.
+
+There is a cleaner way to say the whole thing.
+
+<Callout>
+A prompt produces an output. A system produces behavior.
+</Callout>
+
+When you optimize a prompt, you are tuning a single answer. When you design a system, you are shaping how the whole thing acts over time: how it decides, where it looks, what it does when a step fails. An output is a moment. Behavior is a pattern. The work that matters has moved from one to the other.
+
+So the perfect prompt was never really the goal. It was a useful illusion that held while the tasks were small.
+
+The goal is a system that keeps producing good outcomes even when any single prompt is imperfect, any single model call is wrong, any single step fails. That is what reliability actually means, and you cannot get there by writing.
+
+Stop polishing the sentence. Start designing the structure.
