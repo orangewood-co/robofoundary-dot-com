@@ -15,95 +15,163 @@ interface Kit {
   level: string;
   initials: string;
   features: string[];
+  options?: string[];
+  note?: string;
+  cta?: string;
   dark?: boolean;
 }
 
 const kits: Kit[] = [
   {
     id: 1,
-    name: "RoboStarter Kit",
-    tagline: "The perfect first step into robotics — no experience needed.",
-    price: "₹2,499",
+    name: "LeRobot Research Kit",
+    tagline:
+      "An affordable open-source robotic arm for learning manipulation, AI data collection, and reinforcement learning.",
+    price: "Starting from ₹XX,XXX",
     level: "Beginner",
-    initials: "RS",
+    initials: "LR",
     features: [
-      "Microcontroller board + USB cable",
-      "Assorted sensors (ultrasonic, IR, light)",
-      "Motors, wheels & chassis",
-      "Guided project workbook",
+      "2× LeRobot robotic arms",
+      "Camera for vision-based manipulation",
+      "Open-source Hugging Face LeRobot support",
+      "Pick-and-place & imitation learning projects",
     ],
   },
   {
     id: 2,
-    name: "Vision Explorer Kit",
-    tagline: "Build camera-powered robots with classic computer vision.",
-    price: "₹4,999",
+    name: "Biped Humanoid Kit",
+    tagline:
+      "Explore humanoid walking, balance, inverse kinematics, and gait planning using a 17-DOF biped robot.",
+    price: "Starting from ₹XX,XXX",
     level: "Intermediate",
-    initials: "VE",
+    initials: "BH",
     dark: true,
     features: [
-      "Single-board computer",
-      "USB camera module",
-      "Pan-tilt servo mount",
-      "OpenCV project guide",
+      "17-DOF programmable humanoid",
+      "Servo-based motion control",
+      "Walking & balance algorithms",
+      "Kinematics learning resources",
     ],
+    options: ["With servos", "Without servos"],
   },
   {
     id: 3,
-    name: "ROS2 Rover Kit",
-    tagline: "A mobile robot that runs real ROS2 out of the box.",
-    price: "₹8,999",
+    name: "JetBot AI Vision Kit",
+    tagline:
+      "Build autonomous AI robots using NVIDIA Jetson for computer vision and edge AI applications.",
+    price: "Starting from ₹XX,XXX",
     level: "Intermediate",
-    initials: "RR",
+    initials: "JB",
     features: [
-      "4-wheel drive rover platform",
-      "Lidar sensor for mapping",
-      "Pre-flashed ROS2 controller",
-      "SLAM & navigation tutorials",
+      "NVIDIA Jetson Nano platform",
+      "HD AI camera",
+      "Autonomous navigation",
+      "Object detection & AI inference projects",
     ],
+    options: ["Without Jetson", "With Jetson (2GB / 4GB)"],
   },
   {
     id: 4,
-    name: "Arm Builder Kit",
-    tagline: "Assemble and program your own desktop robotic arm.",
-    price: "₹12,499",
-    level: "Advanced",
-    initials: "AB",
+    name: "Quadruped Robotics Kit",
+    tagline:
+      "Learn legged locomotion, gait generation, and autonomous movement using a 12-DOF robotic dog.",
+    price: "Starting from ₹XX,XXX",
+    level: "Intermediate",
+    initials: "WG",
     features: [
-      "5-DOF servo robotic arm",
-      "Precision gripper attachment",
-      "Inverse kinematics library",
-      "Pick-and-place project series",
+      "12-DOF quadruped robot",
+      "ESP32 / Raspberry Pi compatible",
+      "Multiple gait modes",
+      "Motion planning tutorials",
     ],
   },
   {
     id: 5,
-    name: "Autonomy Pro Kit",
-    tagline: "Everything you need to build a self-navigating robot.",
-    price: "₹18,999",
+    name: "Reachy Mini AI Kit",
+    tagline:
+      "A desktop humanoid platform for AI interaction, vision, speech, and robotics research.",
+    price: "Starting from ₹XX,XXX",
     level: "Advanced",
-    initials: "AP",
+    initials: "RM",
     dark: true,
     features: [
-      "High-torque motor drivetrain",
-      "Depth camera + IMU",
-      "Onboard compute module",
-      "Autonomous navigation stack",
+      "Expressive humanoid head",
+      "AI vision & speech integration",
+      "Python SDK",
+      "Human-robot interaction projects",
+    ],
+    options: [
+      "Reachy Mini Lite — $299 + shipping",
+      "Reachy Mini Wireless — $449 + shipping",
     ],
   },
   {
     id: 6,
-    name: "Classroom Bundle",
-    tagline: "Ten starter kits plus a facilitator guide for institutions.",
-    price: "₹22,999",
-    level: "Institutions",
-    initials: "CB",
+    name: "NOVA EDU Humanoid Kit",
+    tagline:
+      "A full-featured educational humanoid robot designed for AI, robotics, and autonomous behavior programming.",
+    price: "Starting from ₹XX,XXX",
+    level: "Advanced",
+    initials: "NE",
     features: [
-      "10× RoboStarter Kits",
-      "Facilitator teaching guide",
-      "Lesson plans & assessments",
-      "Priority support from our team",
+      "Multi-DOF humanoid platform",
+      "AI-enabled vision system",
+      "Motion programming interface",
+      "Classroom-ready curriculum",
     ],
+  },
+  {
+    id: 7,
+    name: "Robotic Hand AI Kit",
+    tagline:
+      "Program a dexterous robotic hand for grasping, gesture recognition, and manipulation experiments.",
+    price: "Starting from ₹XX,XXX",
+    level: "Advanced",
+    initials: "RH",
+    features: [
+      "Programmable robotic hand",
+      "micro:bit controller",
+      "Multiple grasp patterns",
+      "AI & control programming exercises",
+    ],
+    options: ["With micro:bit", "Without micro:bit"],
+  },
+  {
+    id: 8,
+    name: "Drone Developer Kit",
+    tagline:
+      "Develop autonomous drones for aerial robotics, mapping, AI vision, and navigation.",
+    price: "Starting from ₹XX,XXX",
+    level: "Advanced",
+    initials: "DK",
+    dark: true,
+    features: [
+      "Developer-grade UAV platform",
+      "Flight controller & SDK",
+      "AI vision integration",
+      "Autonomous flight development tools",
+    ],
+  },
+  {
+    id: 9,
+    name: "Small Robot Dataset Starter Kit",
+    tagline:
+      "A complete multi-robot research bundle designed for AI, robotics, computer vision, locomotion, and manipulation.",
+    price: "Starting from ₹XX,XXX",
+    level: "Research",
+    initials: "SR",
+    cta: "Request Quote",
+    features: [
+      "2× LeRobot Research Arms",
+      "17-DOF Biped Humanoid",
+      "JetBot AI Vision Robot",
+      "WAVEGO 12-DOF Quadruped",
+      "Reachy Mini AI Humanoid",
+      "NOVA EDU Humanoid",
+      "AI Robotic Hand",
+      "Drone Developer Kit",
+    ],
+    note: "Ideal for: Robotics Labs • AI Research • Universities • Centers of Excellence",
   },
 ];
 
@@ -222,7 +290,7 @@ const Kits = () => {
                 {kit.tagline}
               </p>
 
-              <ul className="space-y-2 mb-6">
+              <ul className="space-y-2 mb-4">
                 {kit.features.map((feature) => (
                   <li
                     key={feature}
@@ -236,15 +304,50 @@ const Kits = () => {
                 ))}
               </ul>
 
-              <div className="mt-auto flex items-center justify-between gap-3">
-                <span className="text-2xl font-bold">{kit.price}</span>
+              {kit.options && kit.options.length > 0 && (
+                <div className="mb-4">
+                  <p
+                    className={`text-xs font-bold uppercase tracking-wide mb-2 ${
+                      kit.dark ? "text-gray-400" : "text-gray-500"
+                    }`}
+                  >
+                    Options
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {kit.options.map((option) => (
+                      <span
+                        key={option}
+                        className={`text-xs font-medium px-2.5 py-1 rounded-full border ${
+                          kit.dark
+                            ? "border-gray-600 text-gray-200"
+                            : "border-gray-400 text-gray-700"
+                        }`}
+                      >
+                        {option}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {kit.note && (
+                <p
+                  className={`text-xs mb-4 ${
+                    kit.dark ? "text-gray-400" : "text-gray-500"
+                  }`}
+                >
+                  {kit.note}
+                </p>
+              )}
+
+              <div className="mt-auto">
                 <motion.button
                   onClick={openModal}
-                  className="px-5 py-2.5 text-sm font-bold rounded-full bg-black text-white border-2 border-black hover:bg-gray-800 transition-colors cursor-pointer"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.97 }}
+                  className="w-full px-5 py-2.5 text-sm font-bold rounded-full bg-black text-white border-2 border-black hover:bg-gray-800 transition-colors cursor-pointer"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                 >
-                  Buy Now
+                  {kit.cta ?? "Learn More"}
                 </motion.button>
               </div>
             </div>
